@@ -229,7 +229,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed  inset-0 z-40 md:hidden transition-all duration-300 ${
+        className={`fixed  inset-0 z-99 md:hidden transition-all duration-300 ${
           isOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
