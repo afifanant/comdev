@@ -213,7 +213,7 @@ export default function Navbar() {
                 <span
                   className={`font-bold text-lg bg-gradient-to-r ${theme.text} bg-clip-text text-transparent`}
                 >
-                  Sampedia
+                  COMDEV
                 </span>
               </div>
 
