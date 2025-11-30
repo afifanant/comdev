@@ -6,8 +6,8 @@ import {
   Users,
   Trophy,
   Clock,
-  Star,
   Filter,
+  Lightbulb,
 } from "lucide-react";
 
 interface Challenge {
@@ -15,7 +15,7 @@ interface Challenge {
   title: string;
   description: string;
   category: string;
-  difficulty: "Mudah" | "Sedang" | "Sulit";
+  difficulty: "Mudah" | "Sedang" | "Kompleks";
   duration: string;
   participants: number;
   maxParticipants: number;
@@ -28,127 +28,128 @@ interface Challenge {
   tags: string[];
 }
 
+// DATA PROGRAM COMDEV
 const challenges: Challenge[] = [
   {
     id: 1,
-    title: "Zero Waste Week Challenge",
+    title: "Budidaya Maggot Terintegrasi",
     description:
-      "Tantangan untuk mengurangi sampah hingga nol selama satu minggu penuh dengan dokumentasi harian",
-    category: "Lifestyle",
-    difficulty: "Sedang",
-    duration: "7 hari",
-    participants: 234,
-    maxParticipants: 500,
-    reward: "Badge Eco Warrior + 500 poin",
-    deadline: "2024-08-15",
-    progress: 47,
+      "Program pengelolaan sampah organik pasar menggunakan Maggot BSF untuk pakan ternak warga.",
+    category: "Ekonomi",
+    difficulty: "Kompleks",
+    duration: "3 Bulan",
+    participants: 12,
+    maxParticipants: 15,
+    reward: "Sertifikat + Profit Sharing",
+    deadline: "2025-12-20",
+    progress: 75,
     status: "active",
-    icon: "🌱",
-    color: "green",
-    tags: ["Zero Waste", "Daily Challenge", "Documentation"],
+    icon: "🐛",
+    color: "emerald", // Main color
+    tags: ["Desa Binaan", "Wirausaha", "Eco-Farming"],
   },
   {
     id: 2,
-    title: "DIY Upcycling Contest",
+    title: "KSE Mengajar: Literasi",
     description:
-      "Buat produk berguna dari barang bekas dan menangkan hadiah menarik untuk kreativitas terbaik",
-    category: "Kreativitas",
-    difficulty: "Sulit",
-    duration: "14 hari",
-    participants: 156,
-    maxParticipants: 200,
-    reward: "Hadiah Rp 1.000.000 + Featured",
-    deadline: "2024-08-20",
-    progress: 78,
+      "Relawan pengajar baca-tulis dan bahasa Inggris dasar untuk anak-anak di desa binaan.",
+    category: "Pendidikan",
+    difficulty: "Sedang",
+    duration: "4 Minggu",
+    participants: 45,
+    maxParticipants: 50,
+    reward: "SKKM Pengabdian",
+    deadline: "2025-11-30",
+    progress: 90,
     status: "active",
-    icon: "🎨",
-    color: "purple",
-    tags: ["DIY", "Upcycling", "Contest", "Creative"],
+    icon: "📚",
+    color: "teal",
+    tags: ["Teaching", "Social", "Charity"],
   },
   {
     id: 3,
-    title: "Plastic Free July",
+    title: "Instalasi Bank Sampah",
     description:
-      "Bergabunglah dengan gerakan global untuk menghindari plastik sekali pakai selama bulan Juli",
-    category: "Environmental",
-    difficulty: "Mudah",
-    duration: "30 hari",
-    participants: 445,
-    maxParticipants: 1000,
-    reward: "Certificate + 300 poin",
-    deadline: "2024-07-31",
-    progress: 89,
-    status: "active",
-    icon: "🚫",
-    color: "blue",
-    tags: ["Plastic Free", "Global Movement", "Monthly"],
+      "Pembentukan unit bank sampah baru di Fakultas Saintek untuk pengelolaan limbah plastik.",
+    category: "Lingkungan",
+    difficulty: "Sedang",
+    duration: "2 Bulan",
+    participants: 20,
+    maxParticipants: 20,
+    reward: "Poin Keaktifan",
+    deadline: "2025-10-15",
+    progress: 100,
+    status: "completed",
+    icon: "♻️",
+    color: "green",
+    tags: ["Recycle", "Kampus", "Manajemen"],
   },
   {
     id: 4,
-    title: "Community Garden Project",
+    title: "Pelatihan Digital UMKM",
     description:
-      "Mari bersama-sama membuat taman komunitas untuk memproduksi makanan organik lokal",
-    category: "Community",
-    difficulty: "Sedang",
-    duration: "60 hari",
-    participants: 89,
-    maxParticipants: 150,
-    reward: "Fresh Produce + 400 poin",
-    deadline: "2024-09-30",
-    progress: 23,
-    status: "active",
-    icon: "🌿",
-    color: "emerald",
-    tags: ["Gardening", "Community", "Organic", "Long-term"],
+      "Mentoring pemasaran digital untuk ibu-ibu pengrajin daur ulang di komunitas sasaran.",
+    category: "Teknologi",
+    difficulty: "Mudah",
+    duration: "2 Hari",
+    participants: 0,
+    maxParticipants: 100,
+    reward: "E-Sertifikat",
+    deadline: "2025-12-05",
+    progress: 0,
+    status: "upcoming",
+    icon: "💻",
+    color: "yellow",
+    tags: ["Workshop", "Digital", "Pemberdayaan"],
   },
   {
     id: 5,
-    title: "Eco Education Workshop",
+    title: "Aksi Bersih Pesisir",
     description:
-      "Workshop mendatang tentang sustainable living dan praktik ramah lingkungan untuk pemula",
-    category: "Education",
+      "Gerakan volunteer massal membersihkan area pesisir pantai dari sampah plastik kiriman.",
+    category: "Aksi",
     difficulty: "Mudah",
-    duration: "3 hari",
-    participants: 0,
-    maxParticipants: 100,
-    reward: "Certificate + 200 poin",
-    deadline: "2024-08-25",
-    progress: 0,
+    duration: "1 Hari",
+    participants: 120,
+    maxParticipants: 200,
+    reward: "Merchandise + Makan Siang",
+    deadline: "2025-12-10",
+    progress: 30,
     status: "upcoming",
-    icon: "📚",
-    color: "yellow",
-    tags: ["Workshop", "Education", "Beginner", "Sustainable"],
+    icon: "🌊",
+    color: "cyan",
+    tags: ["Cleanup", "Mass Action", "Lingkungan"],
   },
   {
     id: 6,
-    title: "Beach Cleanup Marathon",
+    title: "Riset Sampah Kampus",
     description:
-      "Tantangan yang telah selesai: membersihkan 5 pantai dalam sebulan dengan 500+ volunteer",
-    category: "Action",
+      "Pengumpulan data timbulan sampah harian di kantin UINSU untuk dasar kebijakan zero waste.",
+    category: "Riset",
     difficulty: "Sedang",
-    duration: "30 hari",
-    participants: 523,
-    maxParticipants: 500,
-    reward: "Hero Badge + 600 poin",
-    deadline: "2024-07-15",
+    duration: "1 Minggu",
+    participants: 10,
+    maxParticipants: 10,
+    reward: "Kredit Riset",
+    deadline: "2025-09-01",
     progress: 100,
     status: "completed",
-    icon: "🏖️",
-    color: "cyan",
-    tags: ["Cleanup", "Beach", "Volunteer", "Completed"],
+    icon: "📊",
+    color: "lime",
+    tags: ["Data", "Analysis", "Policy"],
   },
 ];
 
 const categories = [
   "Semua",
-  "Lifestyle",
-  "Kreativitas",
-  "Environmental",
-  "Community",
-  "Education",
-  "Action",
+  "Ekonomi",
+  "Pendidikan",
+  "Lingkungan",
+  "Teknologi",
+  "Aksi",
+  "Riset",
 ];
-const difficulties = ["Semua", "Mudah", "Sedang", "Sulit"];
+const difficulties = ["Semua", "Mudah", "Sedang", "Kompleks"];
 
 export default function CommunityChallenge() {
   const [selectedCategory, setSelectedCategory] = useState("Semua");
@@ -168,60 +169,58 @@ export default function CommunityChallenge() {
     return categoryMatch && difficultyMatch && statusMatch;
   });
 
+  // MAP WARNA (TEMA HIJAU/EMERALD)
   const getColorClasses = (color: string) => {
     const colorMap = {
-      green: {
-        bg: "bg-green-500",
-        light: "bg-green-100",
-        text: "text-green-600",
-        border: "border-green-200",
-      },
-      purple: {
-        bg: "bg-purple-500",
-        light: "bg-purple-100",
-        text: "text-purple-600",
-        border: "border-purple-200",
-      },
-      blue: {
-        bg: "bg-blue-500",
-        light: "bg-blue-100",
-        text: "text-blue-600",
-        border: "border-blue-200",
-      },
       emerald: {
-        bg: "bg-emerald-500",
-        light: "bg-emerald-100",
-        text: "text-emerald-600",
+        bg: "bg-emerald-600",
+        light: "bg-emerald-50",
+        text: "text-emerald-700",
         border: "border-emerald-200",
+        bar: "bg-emerald-600",
+      },
+      teal: {
+        bg: "bg-teal-600",
+        light: "bg-teal-50",
+        text: "text-teal-700",
+        border: "border-teal-200",
+        bar: "bg-teal-600",
+      },
+      green: {
+        bg: "bg-green-600",
+        light: "bg-green-50",
+        text: "text-green-700",
+        border: "border-green-200",
+        bar: "bg-green-600",
       },
       yellow: {
         bg: "bg-yellow-500",
-        light: "bg-yellow-100",
-        text: "text-yellow-600",
+        light: "bg-yellow-50",
+        text: "text-yellow-700",
         border: "border-yellow-200",
+        bar: "bg-yellow-500",
       },
       cyan: {
         bg: "bg-cyan-500",
-        light: "bg-cyan-100",
-        text: "text-cyan-600",
+        light: "bg-cyan-50",
+        text: "text-cyan-700",
         border: "border-cyan-200",
+        bar: "bg-cyan-500",
+      },
+      lime: {
+        bg: "bg-lime-500",
+        light: "bg-lime-50",
+        text: "text-lime-700",
+        border: "border-lime-200",
+        bar: "bg-lime-500",
       },
     };
-    return colorMap[color as keyof typeof colorMap] || colorMap.green;
-  };
-
-  const getDifficultyColor = (difficulty: string) => {
-    const colors = {
-      Mudah: "bg-green-100 text-green-700 border-green-200",
-      Sedang: "bg-yellow-100 text-yellow-700 border-yellow-200",
-      Sulit: "bg-red-100 text-red-700 border-red-200",
-    };
-    return colors[difficulty as keyof typeof colors];
+    return colorMap[color as keyof typeof colorMap] || colorMap.emerald;
   };
 
   const getStatusColor = (status: string) => {
     const colors = {
-      active: "bg-green-100 text-green-700 border-green-200",
+      active: "bg-emerald-100 text-emerald-700 border-emerald-200",
       upcoming: "bg-blue-100 text-blue-700 border-blue-200",
       completed: "bg-gray-100 text-gray-700 border-gray-200",
     };
@@ -229,46 +228,46 @@ export default function CommunityChallenge() {
   };
 
   return (
-    <section className="w-full py-20 px-4">
+    <section className="w-full py-20 px-4 bg-white">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-green-100 px-4 py-2 rounded-full mb-6">
-            <Target className="w-5 h-5 text-green-600 animate-pulse" />
-            <span className="text-green-700 font-medium text-sm">
-              Community Challenges
+          <div className="inline-flex items-center gap-2 bg-emerald-50 px-4 py-2 rounded-full mb-6 border border-emerald-100">
+            <Target className="w-5 h-5 text-emerald-600 animate-pulse" />
+            <span className="text-emerald-700 font-bold text-sm">
+              Program Unggulan
             </span>
           </div>
 
           <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6 leading-tight">
-            Tantangan <span className="text-green-600">Komunitas</span>
+            Proyek & Aksi <span className="text-emerald-600">Nyata</span>
           </h1>
 
           <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed mb-8">
-            Bergabunglah dengan tantangan seru dan buat dampak positif bersama
-            komunitas Sampedia! Raih poin, badge, dan hadiah menarik.
+            Pilih program partisipasi yang sesuai dengan minatmu. Mari berkontribusi langsung 
+            bersama Comdev KSE UINSU.
           </p>
         </div>
 
-        {/* Filters - Responsive 2x2 Grid */}
+        {/* Filters */}
         <div className="mb-12">
           <div className="flex items-center gap-2 mb-6">
-            <Filter className="w-5 h-5 text-gray-600" />
-            <span className="font-semibold text-gray-800">
-              Filter Tantangan
+            <Filter className="w-5 h-5 text-emerald-600" />
+            <span className="font-bold text-gray-800">
+              Filter Program
             </span>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 md:gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {/* Category Filter */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-600 mb-2">
                 Kategori
               </label>
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm"
+                className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-sm bg-gray-50"
               >
                 {categories.map((category) => (
                   <option key={category} value={category}>
@@ -280,13 +279,13 @@ export default function CommunityChallenge() {
 
             {/* Difficulty Filter */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Kesulitan
+              <label className="block text-sm font-medium text-gray-600 mb-2">
+                Tingkat Kerumitan
               </label>
               <select
                 value={selectedDifficulty}
                 onChange={(e) => setSelectedDifficulty(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm"
+                className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-sm bg-gray-50"
               >
                 {difficulties.map((difficulty) => (
                   <option key={difficulty} value={difficulty}>
@@ -298,29 +297,29 @@ export default function CommunityChallenge() {
 
             {/* Status Filter */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-600 mb-2">
                 Status
               </label>
               <select
                 value={selectedStatus}
                 onChange={(e) => setSelectedStatus(e.target.value as any)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm"
+                className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-sm bg-gray-50"
               >
                 <option value="all">Semua Status</option>
-                <option value="active">Aktif</option>
+                <option value="active">Sedang Berjalan</option>
                 <option value="upcoming">Akan Datang</option>
                 <option value="completed">Selesai</option>
               </select>
             </div>
 
-            {/* Quick Stats */}
-            <div className="bg-green-50 border border-green-200 rounded-xl p-3">
-              <div className="text-center">
-                <div className="text-lg font-bold text-green-600 mb-1">
-                  {filteredChallenges.length}
+            {/* Quick Stats Badge */}
+            <div className="flex items-end">
+                <div className="w-full bg-emerald-600 text-white rounded-xl p-2.5 flex items-center justify-between shadow-md">
+                    <span className="text-sm font-medium pl-2">Total Program</span>
+                    <span className="bg-white text-emerald-700 px-3 py-1 rounded-lg font-bold text-sm">
+                        {filteredChallenges.length}
+                    </span>
                 </div>
-                <div className="text-xs text-green-700">Tantangan Tersedia</div>
-              </div>
             </div>
           </div>
         </div>
@@ -335,191 +334,157 @@ export default function CommunityChallenge() {
             return (
               <div
                 key={challenge.id}
-                className={`bg-white rounded-3xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300 hover:scale-105 ${
-                  challenge.status === "completed" ? "opacity-75" : ""
+                className={`bg-white rounded-3xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 ${
+                  challenge.status === "completed" ? "opacity-80 grayscale-[0.5]" : ""
                 }`}
               >
                 {/* Card Header */}
                 <div
-                  className={`${colors.light} p-4 md:p-6 border-b ${colors.border}`}
+                  className={`${colors.light} p-6 border-b ${colors.border}`}
                 >
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-3">
-                      <span className="text-2xl md:text-3xl">
+                      <span className="text-3xl bg-white w-12 h-12 flex items-center justify-center rounded-xl shadow-sm">
                         {challenge.icon}
                       </span>
                       <div>
-                        <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-1 leading-tight">
+                        <h3 className="text-lg font-bold text-gray-900 mb-1 leading-tight line-clamp-1">
                           {challenge.title}
                         </h3>
                         <span
-                          className={`px-2 py-1 rounded-full text-xs font-medium border ${getStatusColor(
+                          className={`px-2.5 py-0.5 rounded-full text-[10px] uppercase font-bold tracking-wider border ${getStatusColor(
                             challenge.status
                           )}`}
                         >
-                          {challenge.status === "active" && "🟢 Aktif"}
-                          {challenge.status === "upcoming" && "🔵 Akan Datang"}
-                          {challenge.status === "completed" && "✅ Selesai"}
+                          {challenge.status === "active" && "Sedang Berjalan"}
+                          {challenge.status === "upcoming" && "Segera Hadir"}
+                          {challenge.status === "completed" && "Selesai"}
                         </span>
                       </div>
                     </div>
                   </div>
 
-                  <p className="text-gray-700 text-sm leading-relaxed mb-4">
+                  <p className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-2 h-10">
                     {challenge.description}
                   </p>
 
                   {/* Tags */}
-                  <div className="flex flex-wrap gap-1 mb-4">
-                    {challenge.tags.slice(0, 2).map((tag, index) => (
+                  <div className="flex flex-wrap gap-1.5">
+                    {challenge.tags.slice(0, 3).map((tag, index) => (
                       <span
                         key={index}
-                        className="px-2 py-1 bg-white/80 text-gray-600 rounded-full text-xs border border-gray-200"
+                        className="px-2 py-1 bg-white text-gray-600 rounded-md text-xs border border-gray-200 font-medium"
                       >
-                        {tag}
+                        #{tag}
                       </span>
                     ))}
-                    {challenge.tags.length > 2 && (
-                      <span className="px-2 py-1 bg-white/80 text-gray-500 rounded-full text-xs border border-gray-200">
-                        +{challenge.tags.length - 2}
-                      </span>
-                    )}
                   </div>
                 </div>
 
                 {/* Card Body */}
-                <div className="p-4 md:p-6">
-                  {/* Challenge Info */}
-                  <div className="grid grid-cols-2 gap-3 mb-4">
-                    <div className="text-center p-2 bg-gray-50 rounded-lg">
-                      <Clock className="w-4 h-4 text-gray-600 mx-auto mb-1" />
-                      <div className="text-xs text-gray-600">Durasi</div>
-                      <div className="text-sm font-semibold text-gray-800">
+                <div className="p-6">
+                  {/* Info Grid */}
+                  <div className="grid grid-cols-2 gap-3 mb-5">
+                    <div className="p-2.5 bg-gray-50 rounded-xl border border-gray-100">
+                      <div className="flex items-center gap-1.5 mb-1 text-gray-500">
+                        <Clock className="w-3.5 h-3.5" />
+                        <span className="text-xs">Durasi</span>
+                      </div>
+                      <div className="text-sm font-bold text-gray-800">
                         {challenge.duration}
                       </div>
                     </div>
-                    <div className="text-center p-2 bg-gray-50 rounded-lg">
-                      <Users className="w-4 h-4 text-gray-600 mx-auto mb-1" />
-                      <div className="text-xs text-gray-600">Peserta</div>
-                      <div className="text-sm font-semibold text-gray-800">
+                    <div className="p-2.5 bg-gray-50 rounded-xl border border-gray-100">
+                      <div className="flex items-center gap-1.5 mb-1 text-gray-500">
+                        <Users className="w-3.5 h-3.5" />
+                        <span className="text-xs">Partisipan</span>
+                      </div>
+                      <div className="text-sm font-bold text-gray-800">
                         {challenge.participants}/{challenge.maxParticipants}
                       </div>
                     </div>
                   </div>
 
-                  {/* Progress Bar */}
+                  {/* Progress Bar (Hanya jika aktif) */}
                   {challenge.status === "active" && (
-                    <div className="mb-4">
-                      <div className="flex justify-between items-center mb-2">
-                        <span className="text-xs text-gray-600">Progress</span>
-                        <span className="text-xs font-semibold text-gray-800">
+                    <div className="mb-5">
+                      <div className="flex justify-between items-center mb-1.5">
+                        <span className="text-xs font-medium text-gray-500">Progress</span>
+                        <span className={`text-xs font-bold ${colors.text}`}>
                           {challenge.progress}%
                         </span>
                       </div>
-                      <div className="w-full bg-gray-200 rounded-full h-2">
+                      <div className="w-full bg-gray-100 rounded-full h-2 overflow-hidden">
                         <div
-                          className={`${colors.bg} h-2 rounded-full transition-all duration-500`}
+                          className={`${colors.bar} h-2 rounded-full transition-all duration-1000 ease-out`}
                           style={{ width: `${challenge.progress}%` }}
                         ></div>
                       </div>
                     </div>
                   )}
 
-                  {/* Participation Rate */}
-                  <div className="mb-4">
-                    <div className="flex justify-between items-center mb-2">
-                      <span className="text-xs text-gray-600">Partisipasi</span>
-                      <span className="text-xs font-semibold text-gray-800">
-                        {Math.round(participationRate)}%
-                      </span>
-                    </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
-                      <div
-                        className="bg-blue-500 h-2 rounded-full transition-all duration-500"
-                        style={{ width: `${participationRate}%` }}
-                      ></div>
+                  {/* Benefit / Reward */}
+                  <div className="mb-5 flex items-start gap-2.5 p-3 bg-amber-50 border border-amber-100 rounded-xl">
+                    <Trophy className="w-4 h-4 text-amber-600 mt-0.5 flex-shrink-0" />
+                    <div>
+                        <span className="block text-xs font-bold text-amber-800 uppercase tracking-wide mb-0.5">
+                            Benefit
+                        </span>
+                        <p className="text-xs text-amber-700 font-medium leading-snug">
+                            {challenge.reward}
+                        </p>
                     </div>
                   </div>
 
-                  {/* Difficulty & Category */}
-                  <div className="flex gap-2 mb-4">
-                    <span
-                      className={`px-2 py-1 rounded-full text-xs font-medium border ${getDifficultyColor(
-                        challenge.difficulty
-                      )}`}
+                  {/* Deadline & Button */}
+                  <div className="flex items-center justify-between gap-4 mt-auto">
+                    <div className="text-xs text-gray-500 flex flex-col">
+                        <span>Batas Daftar:</span>
+                        <span className="font-semibold text-gray-700">
+                            {new Date(challenge.deadline).toLocaleDateString("id-ID", { day: 'numeric', month: 'short' })}
+                        </span>
+                    </div>
+                    
+                    <button
+                        className={`flex-1 py-2.5 px-4 rounded-xl font-bold text-sm transition-all duration-300 shadow-sm ${
+                        challenge.status === "active"
+                            ? "bg-emerald-600 text-white hover:bg-emerald-700 hover:shadow-md"
+                            : challenge.status === "upcoming"
+                            ? "bg-blue-600 text-white hover:bg-blue-700"
+                            : "bg-gray-100 text-gray-400 cursor-not-allowed border border-gray-200"
+                        }`}
+                        disabled={challenge.status === "completed"}
                     >
-                      {challenge.difficulty}
-                    </span>
-                    <span className="px-2 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium border border-gray-200">
-                      {challenge.category}
-                    </span>
+                        {challenge.status === "active" && "Ikut Serta"}
+                        {challenge.status === "upcoming" && "Ingatkan"}
+                        {challenge.status === "completed" && "Selesai"}
+                    </button>
                   </div>
-
-                  {/* Reward */}
-                  <div className="mb-4 p-3 bg-yellow-50 border border-yellow-200 rounded-xl">
-                    <div className="flex items-center gap-2 mb-1">
-                      <Trophy className="w-4 h-4 text-yellow-600" />
-                      <span className="text-xs font-semibold text-yellow-800">
-                        Reward
-                      </span>
-                    </div>
-                    <p className="text-xs text-yellow-700">
-                      {challenge.reward}
-                    </p>
-                  </div>
-
-                  {/* Deadline */}
-                  <div className="flex items-center gap-2 mb-4 text-xs text-gray-600">
-                    <Calendar className="w-4 h-4" />
-                    <span>
-                      Deadline:{" "}
-                      {new Date(challenge.deadline).toLocaleDateString("id-ID")}
-                    </span>
-                  </div>
-
-                  {/* Action Button */}
-                  <button
-                    className={`w-full py-3 px-4 rounded-xl font-medium transition-all duration-300 text-sm ${
-                      challenge.status === "active"
-                        ? `${colors.bg} text-white hover:opacity-90 hover:scale-105`
-                        : challenge.status === "upcoming"
-                        ? "bg-blue-500 text-white hover:bg-blue-600 hover:scale-105"
-                        : "bg-gray-300 text-gray-600 cursor-not-allowed"
-                    }`}
-                    disabled={challenge.status === "completed"}
-                  >
-                    {challenge.status === "active" && "Ikuti Tantangan"}
-                    {challenge.status === "upcoming" && "Daftar Sekarang"}
-                    {challenge.status === "completed" && "Tantangan Selesai"}
-                  </button>
                 </div>
               </div>
             );
           })}
         </div>
 
-        {/* Call to Action */}
+        {/* Call to Action Bottom */}
         <div className="text-center">
-          <div className="bg-gradient-to-r from-green-100 to-blue-100 border border-green-200 rounded-3xl p-6 md:p-8 max-w-4xl mx-auto">
-            <div className="flex items-center justify-center mb-4">
-              <div className="w-12 h-12 md:w-16 md:h-16 bg-green-500 rounded-2xl flex items-center justify-center">
-                <Star className="w-6 h-6 md:w-8 md:h-8 text-white" />
-              </div>
+          <div className="bg-emerald-600 rounded-3xl p-8 max-w-4xl mx-auto shadow-2xl relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+            
+            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+                <div className="text-left">
+                    <h3 className="text-xl md:text-2xl font-bold text-white mb-2 flex items-center gap-2">
+                        <Lightbulb className="w-6 h-6 text-yellow-300" />
+                        Punya Ide Proyek?
+                    </h3>
+                    <p className="text-emerald-50 text-sm md:text-base max-w-lg">
+                        Kami terbuka untuk kolaborasi! Usulkan ide kreatifmu untuk kemajuan desa binaan atau lingkungan kampus.
+                    </p>
+                </div>
+                <button className="bg-white text-emerald-700 px-6 py-3 rounded-xl font-bold hover:bg-emerald-50 transition-all duration-300 shadow-lg whitespace-nowrap">
+                    Ajukan Proposal
+                </button>
             </div>
-
-            <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-4">
-              Punya Ide Tantangan Baru?
-            </h3>
-
-            <p className="text-base md:text-lg text-gray-700 leading-relaxed max-w-2xl mx-auto mb-6">
-              Bagikan ide tantangan kreatifmu dengan komunitas! Mari
-              bersama-sama menciptakan aksi positif yang lebih besar untuk
-              lingkungan.
-            </p>
-
-            <button className="bg-green-500 text-white px-6 md:px-8 py-3 rounded-full font-medium hover:bg-green-600 transition-all duration-300 hover:scale-105 text-sm md:text-base">
-              Usulkan Tantangan Baru
-            </button>
           </div>
         </div>
       </div>
