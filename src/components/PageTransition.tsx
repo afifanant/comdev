@@ -4,8 +4,9 @@ import type React from "react";
 
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Leaf, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import Image from "next/image"; // Wajib import ini
+
 interface PageTransitionProps {
   children: React.ReactNode;
 }
@@ -15,33 +16,24 @@ export default function PageTransition({ children }: PageTransitionProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [showContent, setShowContent] = useState(false);
 
-// Get theme colors based on pathname
+  // Get theme colors based on pathname
   const getThemeColors = () => {
     if (pathname === "/belajar") return { from: "#facc15", to: "#ca8a04" }; // Yellow
-
-    // 1. INI DIUBAH: Komunitas jadi HIJAU (Emerald)
-    if (pathname === "/komunitas") return { from: "#34d399", to: "#059669" }; 
-
+    if (pathname === "/komunitas") return { from: "#34d399", to: "#059669" }; // Green (Emerald)
     if (pathname === "/quiz") return { from: "#a78bfa", to: "#7c3aed" }; // Purple
     
-    // 2. INI DIUBAH: Default (Beranda/Lainnya) jadi BIRU DONGKER (#001d47)
-    // Gue kasih gradasi dikit biar gak mati warnanya (dari #00337A ke #001d47)
+    // --- TAMBAHAN BARU: KONTAK JADI MERAH ---
+    if (pathname === "/contact") return { from: "#ef4444", to: "#b91c1c" }; // Red (Red-500 to Red-700)
+    
+    // Default (Home) - Navy Blue Comdev
     return { from: "#00337A", to: "#001d47" }; 
-  };
-
-const getAccentColor = () => {
-    if (pathname === "/belajar") return "text-yellow-500";
-    // Komunitas jadi teks Hijau
-    if (pathname === "/komunitas") return "text-emerald-500"; 
-    if (pathname === "/quiz") return "text-purple-500";
-    // Default jadi teks Biru (biar match sama background biru dongker)
-    return "text-blue-600"; 
   };
 
   const getPageName = () => {
     if (pathname === "/belajar") return "Belajar";
     if (pathname === "/komunitas") return "Komunitas";
     if (pathname === "/quiz") return "Quiz";
+    if (pathname === "/contact") return "Kontak"; // Label Kontak
     if (pathname === "/") return "Beranda";
     return "Halaman";
   };
@@ -79,21 +71,19 @@ const getAccentColor = () => {
         >
           <div className="text-center">
             {/* Animated Logo */}
-      {/* Animated Logo */}
             <motion.div
               initial={{ scale: 0, rotate: -180 }}
               animate={{ scale: 1, rotate: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              // Gue tambahin 'overflow-hidden' biar gambar gak bocor keluar lingkaran
               className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-2xl overflow-hidden relative"
             >
               <Image 
-                src="/logo-comdev.png"  // Langsung begini (Next.js otomatis cari di folder public)
+                src="/logo-comdev.png" 
                 alt="Logo Comdev"
-                width={80}  // Ukuran logo di dalam lingkaran
+                width={80}
                 height={80}
-                className="object-contain" // Biar logo gak gepeng
-                priority // Biar diload duluan karena ini LCP (Largest Contentful Paint)
+                className="object-contain"
+                priority 
               />
             </motion.div>
 

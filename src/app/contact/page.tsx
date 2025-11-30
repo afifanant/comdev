@@ -16,9 +16,10 @@ import {
   HelpCircle,
   ChevronDown,
   ChevronUp,
+  Handshake,
 } from "lucide-react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import Navbar from "../components/Navbar"; // Pastikan path import ini sesuai
+import Footer from "../components/Footer"; // Pastikan path import ini sesuai
 
 interface ContactForm {
   name: string;
@@ -28,57 +29,59 @@ interface ContactForm {
   message: string;
 }
 
+// KATEGORI BANTUAN DISESUAIKAN DENGAN COMDEV
 const supportCategories = [
   {
-    id: "learning",
-    title: "Bantuan Belajar",
-    description: "Pertanyaan seputar materi pembelajaran",
+    id: "program",
+    title: "Program & Kegiatan",
+    description: "Tanya seputar Maggot, Desa Binaan, dll",
     icon: BookOpen,
     color: "yellow",
   },
   {
-    id: "community",
-    title: "Komunitas",
-    description: "Bergabung atau masalah komunitas",
+    id: "volunteer",
+    title: "Rekrutmen Relawan",
+    description: "Info pendaftaran anggota baru",
     icon: Users,
     color: "yellow",
   },
   {
-    id: "feedback",
-    title: "Saran & Masukan",
-    description: "Ide untuk pengembangan platform",
-    icon: Star,
+    id: "partnership",
+    title: "Kerjasama & CSR",
+    description: "Tawaran kolaborasi atau sponsor",
+    icon: Handshake,
     color: "purple",
   },
   {
     id: "technical",
-    title: "Masalah Teknis",
-    description: "Bug atau error pada website",
+    title: "Website & Data",
+    description: "Lapor bug atau masalah akses",
     icon: MessageCircle,
     color: "red",
   },
 ];
 
+// FAQ DISESUAIKAN DENGAN KSE UINSU
 const faqData = [
   {
-    question: "Bagaimana cara bergabung dengan komunitas Sampedia?",
+    question: "Bagaimana cara bergabung menjadi relawan Comdev?",
     answer:
-      "Kamu bisa bergabung dengan komunitas Sampedia secara gratis melalui halaman Komunitas. Cukup daftar dengan email dan mulai berpartisipasi dalam diskusi dan tantangan.",
+      "Pendaftaran relawan biasanya dibuka setiap awal semester atau saat ada proyek besar. Pantau terus Instagram @comdev_kseuinsu untuk info open recruitment terbaru.",
   },
   {
-    question: "Apakah semua materi pembelajaran gratis?",
+    question: "Apakah kegiatan ini khusus untuk penerima beasiswa KSE?",
     answer:
-      "Ya! Semua materi pembelajaran di Sampedia tersedia gratis untuk semua pengguna. Kami berkomitmen untuk memberikan edukasi lingkungan yang dapat diakses oleh siapa saja.",
+      "Tidak selalu. Meskipun inti pengurus adalah beswan KSE, banyak kegiatan aksi sosial (seperti bersih pantai atau webinar) yang terbuka untuk mahasiswa umum UINSU.",
   },
   {
-    question: "Bagaimana sistem poin dan badge bekerja?",
+    question: "Bagaimana cara mengajukan kerjasama CSR?",
     answer:
-      "Kamu mendapatkan poin dengan menyelesaikan quiz, tantangan komunitas, dan berpartisipasi aktif. Badge diberikan sebagai pencapaian khusus untuk aktivitas tertentu.",
+      "Anda bisa menghubungi divisi External Relations kami melalui email atau formulir di halaman ini dengan memilih kategori 'Kerjasama & CSR'.",
   },
   {
-    question: "Bisakah saya berkontribusi membuat konten?",
+    question: "Dimana lokasi Desa Binaan Comdev KSE UINSU?",
     answer:
-      "Tentu saja! Kami sangat terbuka untuk kontribusi dari komunitas. Kamu bisa mengirimkan ide, artikel, atau solusi kreatif melalui form kontak ini.",
+      "Saat ini fokus utama desa binaan kami berada di kawasan Martubung, Medan, dengan fokus pada pengelolaan sampah organik dan ekonomi kreatif.",
   },
 ];
 
@@ -109,8 +112,19 @@ export default function ContactPage() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    // --- LOGIKA KIRIM EMAIL OTOMATIS (MAILTO) ---
+    // Ini akan membuka aplikasi email bawaan user
+    const recipient = "comdev.kseuinsu@gmail.com"; // Ganti dengan email asli Comdev
+    const subject = encodeURIComponent(`[${formData.category.toUpperCase()}] ${formData.subject}`);
+    const body = encodeURIComponent(
+      `Halo Admin Comdev,\n\nSaya ${formData.name} (${formData.email}) ingin menyampaikan pesan:\n\n${formData.message}\n\nTerima kasih.`
+    );
+
+    // Simulasi loading sebentar biar kerasa UX-nya
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+
+    // Buka Email Client
+    window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
 
     setIsSubmitting(false);
     setIsSubmitted(true);
@@ -156,6 +170,7 @@ export default function ContactPage() {
   return (
     <>
       <Navbar />
+      {/* Warna tetap Merah-Kuning sesuai request */}
       <div className="min-h-screen bg-gradient-to-br from-red-50 to-yellow-50">
         {/* Header */}
         <section className="pt-32 pb-16 px-4">
@@ -172,8 +187,8 @@ export default function ContactPage() {
             </h1>
 
             <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-              Tim Sampedia siap membantu! Hubungi kami untuk pertanyaan, saran,
-              atau bantuan apapun.
+              Tim Comdev KSE UINSU siap membantu! Hubungi kami untuk info program, 
+              kerjasama, atau aspirasi mahasiswa.
             </p>
           </div>
         </section>
@@ -193,10 +208,10 @@ export default function ContactPage() {
                     <div className="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center">
                       <Mail className="w-6 h-6 text-white" />
                     </div>
-                    <div>
+                    <div className="overflow-hidden">
                       <div className="font-semibold text-gray-800">Email</div>
-                      <div className="text-gray-600 text-sm">
-                        hello@sampedia.id
+                      <div className="text-gray-600 text-sm truncate">
+                        comdev.kseuinsu@gmail.com
                       </div>
                     </div>
                   </div>
@@ -206,9 +221,9 @@ export default function ContactPage() {
                       <Phone className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <div className="font-semibold text-gray-800">Telepon</div>
+                      <div className="font-semibold text-gray-800">WhatsApp</div>
                       <div className="text-gray-600 text-sm">
-                        +62 21 1234 5678
+                        +62 812-3456-7890
                       </div>
                     </div>
                   </div>
@@ -220,7 +235,7 @@ export default function ContactPage() {
                     <div>
                       <div className="font-semibold text-gray-800">Alamat</div>
                       <div className="text-gray-600 text-sm">
-                        Surakarta, Indonesia
+                        UINSU, Medan, Indonesia
                       </div>
                     </div>
                   </div>
@@ -230,7 +245,7 @@ export default function ContactPage() {
               {/* Support Categories */}
               <div className="bg-white rounded-3xl p-6 shadow-sm border border-gray-200">
                 <h3 className="text-xl font-bold text-gray-800 mb-6">
-                  Kategori Bantuan
+                  Tujuan Pesan
                 </h3>
 
                 <div className="space-y-3">
@@ -276,13 +291,13 @@ export default function ContactPage() {
                   <div>
                     <div className="font-bold text-gray-800">Waktu Respon</div>
                     <div className="text-red-600 text-sm font-medium">
-                      Maksimal 24 jam
+                      1-2 Hari Kerja
                     </div>
                   </div>
                 </div>
                 <p className="text-gray-600 text-sm">
-                  Kami berkomitmen untuk merespon setiap pertanyaan dalam waktu
-                  maksimal 24 jam pada hari kerja.
+                  Kami adalah organisasi mahasiswa. Kami akan berusaha membalas 
+                  secepat mungkin disela-sela kegiatan perkuliahan.
                 </p>
               </div>
             </div>
@@ -296,16 +311,15 @@ export default function ContactPage() {
                       <CheckCircle className="w-10 h-10 text-red-500" />
                     </div>
                     <h3 className="text-2xl font-bold text-gray-800 mb-4">
-                      Pesan Terkirim! 🎉
+                      Membuka Email... 📧
                     </h3>
                     <p className="text-gray-600 mb-6">
-                      Terima kasih atas pesanmu. Tim kami akan segera merespon
-                      dalam waktu maksimal 24 jam.
+                      Sistem sedang membuka aplikasi email kamu. Silakan tekan tombol <strong>"Kirim"</strong> di aplikasi emailmu untuk menyelesaikan pesan.
                     </p>
                     <div className="inline-flex items-center gap-2 bg-red-100 px-4 py-2 rounded-full">
                       <CheckCircle className="w-4 h-4 text-red-600" />
                       <span className="text-red-700 font-medium text-sm">
-                        Pesan berhasil dikirim
+                        Proses dialihkan
                       </span>
                     </div>
                   </div>
@@ -328,7 +342,7 @@ export default function ContactPage() {
                             onChange={handleInputChange}
                             required
                             className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-300"
-                            placeholder="Masukkan nama lengkap"
+                            placeholder="Nama Kamu"
                           />
                         </div>
 
@@ -380,7 +394,7 @@ export default function ContactPage() {
                             onChange={handleInputChange}
                             required
                             className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-300"
-                            placeholder="Ringkasan singkat pertanyaan"
+                            placeholder="Judul pesan"
                           />
                         </div>
                       </div>
@@ -396,7 +410,7 @@ export default function ContactPage() {
                           required
                           rows={6}
                           className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-300 resize-none"
-                          placeholder="Jelaskan pertanyaan atau masalah yang ingin kamu sampaikan..."
+                          placeholder="Tuliskan pertanyaan, saran, atau tawaran kerjasama kamu..."
                         />
                       </div>
 
@@ -408,12 +422,12 @@ export default function ContactPage() {
                         {isSubmitting ? (
                           <>
                             <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                            Mengirim...
+                            Mempersiapkan Email...
                           </>
                         ) : (
                           <>
                             <Send className="w-5 h-5" />
-                            Kirim Pesan
+                            Kirim ke Email Comdev
                           </>
                         )}
                       </button>
@@ -432,10 +446,10 @@ export default function ContactPage() {
                 <span className="text-yellow-700 font-medium text-sm">FAQ</span>
               </div>
               <h2 className="text-3xl font-bold text-gray-800 mb-4">
-                Pertanyaan yang Sering Ditanyakan
+                Pertanyaan Umum (FAQ)
               </h2>
               <p className="text-gray-600 max-w-2xl mx-auto">
-                Temukan jawaban untuk pertanyaan umum seputar Sampedia
+                Hal-hal yang sering ditanyakan seputar Comdev KSE UINSU
               </p>
             </div>
 

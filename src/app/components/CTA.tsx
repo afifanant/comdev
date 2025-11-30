@@ -33,14 +33,20 @@ export default function CTA() {
           {/* Tombol Utama (Putih dengan Teks Biru Dongker) */}
           <button 
             onClick={() => window.location.href = "/komunitas"}
-            className="bg-white text-[#001d47] font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2 justify-center"
+            // Added cursor-pointer
+            className="bg-white text-[#001d47] font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2 justify-center cursor-pointer"
           >
             <span>Gabung Sekarang</span>
             <ArrowRight className="w-5 h-5" />
           </button>
 
           {/* Tombol Sekunder (Outline Putih, Hover jadi Biru Dongker) */}
-          <button className="border-2 border-white/30 text-white hover:bg-white hover:text-[#001d47] font-semibold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 flex items-center gap-2 justify-center">
+          <button 
+            // UPDATE: Link ke Canva Profil Comdev
+            onClick={() => window.open("https://www.canva.com/design/DAG2xJ9n_ds/hnrQD88gVMy58zpdHbgyVg/view?utm_content=DAG2xJ9n_ds&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hb90df97ff3", "_blank")}
+            // Added cursor-pointer
+            className="border-2 border-white/30 text-white hover:bg-white hover:text-[#001d47] font-semibold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 flex items-center gap-2 justify-center cursor-pointer"
+          >
             <Download className="w-5 h-5" />
             <span>Download Profil</span>
           </button>

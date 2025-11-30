@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import Image from "next/image"; // <--- Saya tambahkan ini untuk Logo
+import Image from "next/image";
 import {
   Menu,
   X,
@@ -31,17 +31,17 @@ export default function Navbar() {
         gradientOverlay: "from-yellow-400 to-yellow-500",
       };
     } else if (pathname === "/komunitas") {
-      // Kamu bisa ubah ini jadi hijau lagi kalau mau, tapi sekarang biarkan biru standard
+      // --- PERBAIKAN: GANTI JADI HIJAU (EMERALD) ---
       return {
-        primary: "blue",
-        gradient: "from-blue-500 to-blue-600",
-        gradientHover: "from-blue-600 to-blue-700",
-        text: "from-blue-600 to-blue-600",
-        bg: "bg-blue-100",
-        bgHover: "hover:bg-blue-50/80",
-        textHover: "hover:text-blue-600",
-        borderColor: "border-blue-100",
-        gradientOverlay: "from-blue-400 to-blue-500",
+        primary: "emerald",
+        gradient: "from-emerald-500 to-emerald-600",
+        gradientHover: "from-emerald-600 to-emerald-700",
+        text: "from-emerald-600 to-emerald-600",
+        bg: "bg-emerald-100", // <--- INI YANG BIKIN BACKGROUND TOMBOL IJO
+        bgHover: "hover:bg-emerald-50/80",
+        textHover: "hover:text-emerald-600",
+        borderColor: "border-emerald-100",
+        gradientOverlay: "from-emerald-400 to-emerald-500",
       };
     } else if (pathname === "/quiz") {
       return {
@@ -69,14 +69,13 @@ export default function Navbar() {
       };
     }
 
-    // --- BAGIAN INI YANG SAYA UBAH (DEFAULT / HOME) ---
-    // Menggunakan warna Biru Dongker (#001d47)
+    // Default (Home) - Navy Blue Comdev
     return {
-      primary: "slate", // Fallback color name
-      gradient: "from-[#001d47] to-[#00337A]", // Gradasi Biru Dongker
+      primary: "slate",
+      gradient: "from-[#001d47] to-[#00337A]",
       gradientHover: "from-[#00337A] to-[#001d47]",
-      text: "from-[#001d47] to-[#001d47]", // Text Color
-      bg: "bg-blue-50", // Background tipis
+      text: "from-[#001d47] to-[#001d47]",
+      bg: "bg-blue-50",
       bgHover: "hover:bg-blue-100",
       textHover: "hover:text-[#001d47]",
       borderColor: "border-blue-100",
@@ -94,7 +93,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Simplified nav items without dropdown
   const navItems = [
     {
       icon: Home,
@@ -120,7 +118,7 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Desktop Navbar - Capsule Shape */}
+      {/* Desktop Navbar */}
       <nav
         className={`fixed top-6 left-1/2 transform -translate-x-1/2 z-[90] transition-all duration-500 ease-in-out  ${
           scrolled ? "scale-95 top-4" : "scale-100"
@@ -135,13 +133,12 @@ export default function Navbar() {
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center space-x-2">
               
-              {/* --- LOGO / BRAND (UPDATED) --- */}
+              {/* Logo */}
               <div className="flex items-center space-x-2 pr-4">
                 <div className="relative w-10 h-10 flex items-center justify-center overflow-hidden">
-                   {/* Ganti Icon Leaf dengan Image Logo */}
                    <Image 
                       src="/logo-comdev.png" 
-                      alt="Logo Sampedia" 
+                      alt="Logo Comdev" 
                       width={40} 
                       height={40} 
                       className="object-contain"
@@ -198,13 +195,11 @@ export default function Navbar() {
 
             {/* Mobile Content */}
             <div className="md:hidden  flex items-center justify-between min-w-82 ">
-              
-              {/* --- LOGO MOBILE (UPDATED) --- */}
               <div className="flex items-center space-x-2">
                 <div className="relative w-8 h-8 flex items-center justify-center">
                    <Image 
                       src="/logo-comdev.png" 
-                      alt="Logo Sampedia" 
+                      alt="Logo Comdev" 
                       width={32} 
                       height={32} 
                       className="object-contain"
@@ -217,7 +212,6 @@ export default function Navbar() {
                 </span>
               </div>
 
-              {/* Mobile Menu Button */}
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 className={`p-2 rounded-full ${theme.bgHover} transition-colors duration-200`}
@@ -241,13 +235,11 @@ export default function Navbar() {
             : "opacity-0 pointer-events-none"
         }`}
       >
-        {/* Backdrop */}
         <div
           className="absolute inset-0 bg-black/20 backdrop-blur-sm"
           onClick={() => setIsOpen(false)}
         ></div>
 
-        {/* Mobile Menu Panel */}
         <div
           className={`absolute top-24 left-4 right-4 bg-white/95 backdrop-blur-lg rounded-3xl shadow-2xl border ${
             theme.borderColor
@@ -285,7 +277,6 @@ export default function Navbar() {
                     } p-2 rounded-full transition-colors duration-200`}
                   >
                     <IconComponent
-                      // Logic warna icon mobile
                       className={`w-5 h-5 ${
                         isActive
                           ? theme.textHover.replace("hover:", "")

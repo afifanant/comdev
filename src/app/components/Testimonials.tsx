@@ -15,7 +15,7 @@ export default function Testimonials() {
       content:
         "Program budidaya maggot dari Comdev KSE UINSU sangat membantu kami para peternak lele. Biaya pakan jadi lebih hemat dan sampah organik di desa kami berkurang drastis.",
       rating: 5,
-      avatar: "https://i.pravatar.cc/150?u=suryadi",
+      avatar: "https://i.pravatar.cc/150?u=anisa",
       color: "navy",
       location: "Martubung, Medan",
     },
@@ -25,7 +25,7 @@ export default function Testimonials() {
       content:
         "Bergabung di Comdev bukan cuma soal pengabdian, tapi belajar leadership nyata. Melihat langsung dampak ekonomi sirkular bagi warga adalah pengalaman tak ternilai.",
       rating: 5,
-      avatar: "https://i.pravatar.cc/150?u=anisa",
+      avatar: "https://i.pravatar.cc/150?u=suryadi",
       color: "blue",
       location: "Mahasiswa UINSU",
     },

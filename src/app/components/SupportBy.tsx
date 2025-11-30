@@ -1,15 +1,24 @@
 "use client";
 import { useState } from "react";
-import { Heart, ExternalLink, Building2, GraduationCap, Handshake, Sprout, Globe, Users } from "lucide-react";
+import { 
+  Heart, 
+  ExternalLink, 
+  Building2, 
+  GraduationCap, 
+  Handshake, 
+  Sprout, 
+  School, // Icon untuk Bank Sampah SD
+  Fish    // Icon untuk Eco Lele
+} from "lucide-react";
 
 export default function SupportBy() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-  // DATA PARTNER & PENCAPAIAN (Disesuaikan dengan KSE UINSU)
+  // DATA PARTNER & PROGRAM KERJA (Disesuaikan dengan Progja Comdev)
   const brands = [
     {
       name: "Yayasan Karya Salemba Empat",
-      icon: <GraduationCap className="w-10 h-10 text-[#001d47]" />, // Ganti emoji dengan Icon Lucide biar rapi
+      icon: <GraduationCap className="w-10 h-10 text-[#001d47]" />,
       description: "Induk organisasi pemberi beasiswa dan pembinaan kepemimpinan mahasiswa.",
       website: "https://kse.or.id",
       category: "Foundation",
@@ -24,41 +33,45 @@ export default function SupportBy() {
     {
       name: "PT Musim Mas",
       icon: <Handshake className="w-10 h-10 text-[#001d47]" />,
-      description: "Mitra CSR strategis dalam pengembangan program Integrated Farming & Maggot.",
-      website: "#",
+      description: "Mitra CSR strategis dalam pengembangan program pemberdayaan masyarakat.",
+      website: "https://musimmas.com", 
       category: "CSR Partner",
     },
+    // --- PROGJA COMDEV ---
     {
-      name: "Desa Binaan Martubung",
-      icon: <Users className="w-10 h-10 text-[#001d47]" />,
-      description: "Lokasi implementasi program pemberdayaan masyarakat berkelanjutan.",
+      name: "Bank Sampah SD",
+      icon: <School className="w-10 h-10 text-[#001d47]" />,
+      description: "Program edukasi pemilahan sampah dan literasi ekonomi untuk siswa Sekolah Dasar binaan.",
       website: "#",
-      category: "Community",
+      category: "Education",
     },
     {
-      name: "Program Green House",
+      name: "Eco Lele & Maggot BSF",
+      icon: <Fish className="w-10 h-10 text-[#001d47]" />,
+      description: "Budidaya lele bioflok terintegrasi dengan pakan alternatif maggot (Black Soldier Fly).",
+      website: "#",
+      category: "Integrated Farming",
+    },
+    {
+      name: "Perkebunan Berkomdev",
       icon: <Sprout className="w-10 h-10 text-[#001d47]" />,
-      description: "Inovasi pertanian modern untuk ketahanan pangan mandiri.",
+      description: "Optimalisasi lahan untuk pertanian organik dan ketahanan pangan mandiri masyarakat.",
       website: "#",
-      category: "Program",
-    },
-    {
-      name: "Technology for Social Good",
-      icon: <Globe className="w-10 h-10 text-[#001d47]" />,
-      description: "Pemanfaatan teknologi tepat guna untuk solusi masalah sosial.",
-      website: "#",
-      category: "Innovation",
+      category: "Agriculture",
     },
   ];
 
   const getCategoryColor = (category: string) => {
     const colors = {
+      // Warna Partner
       Foundation: "bg-blue-100 text-blue-700 border-blue-200",
-      Institution: "bg-green-100 text-green-700 border-green-200",
+      Institution: "bg-indigo-100 text-indigo-700 border-indigo-200",
       "CSR Partner": "bg-orange-100 text-orange-700 border-orange-200",
-      Community: "bg-purple-100 text-purple-700 border-purple-200",
-      Program: "bg-teal-100 text-teal-700 border-teal-200",
-      Innovation: "bg-cyan-100 text-cyan-700 border-cyan-200",
+      
+      // Warna Progja
+      "Education": "bg-teal-100 text-teal-700 border-teal-200",
+      "Integrated Farming": "bg-lime-100 text-lime-700 border-lime-200",
+      "Agriculture": "bg-green-100 text-green-700 border-green-200",
     };
     return (
       colors[category as keyof typeof colors] ||
@@ -83,17 +96,20 @@ export default function SupportBy() {
           </h1>
 
           <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Pergerakan kami didukung oleh institusi terpercaya dan mitra strategis 
-            untuk menciptakan dampak yang luas dan berkelanjutan.
+            Sinergi antara mitra strategis dan program kerja nyata untuk menciptakan 
+            dampak berkelanjutan bagi masyarakat dan lingkungan.
           </p>
         </div>
 
         {/* Brands Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {brands.map((brand, index) => (
-            <div
+            <a
               key={brand.name}
-              className="group relative cursor-pointer"
+              href={brand.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative cursor-pointer block"
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
@@ -101,7 +117,7 @@ export default function SupportBy() {
               <div
                 className={`
                 relative bg-white rounded-2xl p-8 shadow-sm border border-gray-100
-                transition-all duration-500 ease-out
+                transition-all duration-500 ease-out h-full
                 ${
                   hoveredIndex === index
                     ? "shadow-2xl scale-105 -translate-y-2"
@@ -116,11 +132,10 @@ export default function SupportBy() {
                 </div>
 
                 {/* Content */}
-                <div className="relative z-10">
+                <div className="relative z-10 flex flex-col h-full">
                   {/* Logo & Category */}
                   <div className="flex items-start justify-between mb-6">
                     <div className="transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
-                      {/* Render Icon component instead of string emoji */}
                       {brand.icon}
                     </div>
                     <span
@@ -139,14 +154,14 @@ export default function SupportBy() {
                   </h3>
 
                   {/* Description */}
-                  <p className="text-gray-600 text-sm leading-relaxed mb-6 line-clamp-2">
+                  <p className="text-gray-600 text-sm leading-relaxed mb-6 line-clamp-3 flex-grow">
                     {brand.description}
                   </p>
 
                   {/* Visit Link */}
                   <div
                     className={`
-                    flex items-center gap-2 text-[#001d47] font-medium text-sm
+                    flex items-center gap-2 text-[#001d47] font-medium text-sm mt-auto
                     transform transition-all duration-300
                     ${hoveredIndex === index ? "translate-x-2" : ""}
                   `}
@@ -165,7 +180,7 @@ export default function SupportBy() {
                 `}
                 ></div>
               </div>
-            </div>
+            </a>
           ))}
         </div>
 
