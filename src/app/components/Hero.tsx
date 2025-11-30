@@ -50,12 +50,16 @@ export default function Hero({
     >
       <section className="relative w-full h-[80vh] lg:h-[120vh] flex items-center justify-center overflow-hidden">
         {/* Background Gradient - Dynamic based on theme */}
+        {/* Z-Index 10 untuk background paling belakang */}
         <div className={`absolute inset-0 ${theme.gradient} z-[10]`} />
 
+        {/* Komponen Paralax (Pohon, Sampah, Awan) biasanya ada di layer ini */}
         <Paralax />
 
+        {/* KONTEN UTAMA (JUDUL & TOMBOL) */}
         <motion.header
-          className="lg:-mt-55 -mt-25 text-center px-4 w-full max-w-4xl items-center relative z-[20]"
+          // UBAH: z-[20] jadi z-50 biar dia DI ATAS elemen paralax (pohon/sampah)
+          className="lg:-mt-55 -mt-25 text-center px-4 w-full max-w-4xl items-center relative z-50"
           style={{
             y,
             rotateX,
@@ -88,13 +92,14 @@ export default function Hero({
           <div className="flex gap-4 justify-center ">
             <button
               onClick={ctaPrimary.action}
-              className={`${theme.primaryColor} text-shadow-sm inset-shadow-sm inset-shadow-black/15 ${theme.primaryHover} text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 `}
+              // Pastikan button juga punya pointer-events-auto dan z-index aman (ikut parent z-50)
+              className={`${theme.primaryColor} text-shadow-sm inset-shadow-sm inset-shadow-black/15 ${theme.primaryHover} text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 cursor-pointer relative`}
             >
               {ctaPrimary.text}
             </button>
             <button
               onClick={ctaSecondary.action}
-              className={`border-2 ${theme.borderColor} ${primaryColor} ${theme.hoverBg} font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105`}
+              className={`border-2 ${theme.borderColor} ${primaryColor} ${theme.hoverBg} font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 cursor-pointer relative`}
             >
               {ctaSecondary.text}
             </button>
