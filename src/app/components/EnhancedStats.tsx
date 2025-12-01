@@ -1,46 +1,58 @@
 "use client"
 import { useState, useEffect } from "react"
-import Link from "next/link" // IMPORT LINK DARI NEXT.JS
+import Link from "next/link" 
 import { Users, Recycle, TreePine, Award, TrendingUp, Globe, Heart, Zap, Leaf } from "lucide-react"
 
+// Helper untuk membersihkan dan mendapatkan nilai target yang benar
+const getTargetValue = (value: string): number => {
+    // Menghilangkan semua karakter non-digit kecuali tanda desimal (jika perlu)
+    const cleaned = value.replace(/[^0-9]/g, ''); 
+    return parseInt(cleaned, 10);
+};
+
+// Data statistik (SUDAH DISESUAIKAN ULANG AGAR JAUH LEBIH HUMBLE DAN REALISTIS)
 const statsData = [
   {
     icon: <Users className="w-8 h-8" />,
-    value: "10.000+",
-    label: "Orang Teredukasi",
-    description: "Masyarakat yang telah mengikuti program edukasi kami",
+    value: "1.000+", // Disesuaikan: Turun dari 10.000+
+    label: "Partisipan Kegiatan", 
+    description: "Jumlah total peserta yang terlibat dalam webinar, workshop, dan event",
     color: "navy",
-    growth: "+15%",
-    detail: "Setiap bulan bertambah 800+ member baru",
+    growth: "+8%", // Disesuaikan
+    detail: "Target penambahan 100 partisipan baru setiap bulan",
   },
   {
     icon: <Recycle className="w-8 h-8" />,
-    value: "85%",
-    label: "Peningkatan Daur Ulang",
-    description: "Kenaikan partisipasi daur ulang di komunitas sasaran",
+    value: "40%", // Disesuaikan: Turun dari 85%
+    label: "Target Daur Ulang", 
+    description: "Persentase kenaikan partisipasi daur ulang di area fokus Comdev",
     color: "blue",
-    growth: "+23%",
-    detail: "Dari 62% menjadi 85% dalam 6 bulan terakhir",
+    growth: "+15%", // Disesuaikan
+    detail: "Menuju target 50% partisipasi di akhir periode program",
   },
   {
     icon: <TreePine className="w-8 h-8" />,
-    value: "500+",
+    value: "100+", // Disesuaikan: Turun dari 500+
     label: "Pohon Tertanam",
-    description: "Sebagai bagian dari program rehabilitasi lingkungan",
+    description: "Total kontribusi penanaman pohon dalam program rehabilitasi lingkungan",
     color: "teal",
-    growth: "+31%",
-    detail: "Target 1000 pohon pada akhir tahun",
+    growth: "+20%", // Disesuaikan
+    detail: "Fokus pada program penghijauan di sekitar lingkungan kampus",
   },
   {
     icon: <Award className="w-8 h-8" />,
-    value: "12",
-    label: "Penghargaan",
-    description: "Atas inovasi dalam edukasi pengelolaan sampah",
+    value: "3", // Disesuaikan: Turun dari 12
+    label: "Penghargaan Utama",
+    description: "Apresiasi atas inovasi sosial dan komitmen lingkungan",
     color: "gold",
-    growth: "+42%",
-    detail: "Termasuk penghargaan internasional",
+    growth: "+10%", // Disesuaikan
+    detail: "Termasuk penghargaan di tingkat regional dan nasional",
   },
 ]
+
+// Array untuk menyimpan target value agar tidak dihitung ulang di render
+const targets = statsData.map(stat => getTargetValue(stat.value)); 
+
 
 export default function EnhancedStats() {
   const [countedStats, setCountedStats] = useState(statsData.map(() => 0))
@@ -71,7 +83,8 @@ export default function EnhancedStats() {
     const steps = duration / interval
 
     statsData.forEach((stat, index) => {
-      const target = Number.parseInt(stat.value.replace(/[^\d]/g, ""))
+      // Menggunakan targets yang sudah dihitung sebelumnya
+      const target = targets[index] 
       if (isNaN(target)) return
 
       let step = 0
@@ -129,6 +142,29 @@ export default function EnhancedStats() {
     return colorMap[color as keyof typeof colorMap] || colorMap.navy
   }
 
+  // Fungsi untuk merender nilai yang sudah diformat dengan benar (separator ribuan + suffix)
+  const renderFormattedValue = (index: number, statValue: string): string => {
+    const currentCount = countedStats[index];
+    const target = targets[index];
+    
+    if (isNaN(target)) {
+        return statValue;
+    }
+
+    // Tampilkan angka dengan separator ribuan (misal: 1.000)
+    let display = currentCount.toLocaleString('id-ID');
+
+    // Tambahkan suffix jika perhitungan sudah selesai
+    if (currentCount === target) {
+        if (statValue.includes('+')) {
+            display += '+';
+        } else if (statValue.includes('%')) {
+            display += '%';
+        }
+    }
+    return display;
+  };
+
   return (
     <section id="stats-section" className="relative w-full py-20 px-4 overflow-hidden bg-white">
       <div className="max-w-6xl mx-auto relative z-10">
@@ -148,8 +184,10 @@ export default function EnhancedStats() {
             </span>
           </h1>
 
+          {/* FIX: Pesan diubah agar tidak absolut/overclaim */}
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
-            Angka-angka ini membuktikan bahwa gerakan kolektif dapat menciptakan perubahan besar untuk lingkungan kita.
+            Angka-angka ini menunjukkan potensi perubahan yang dapat kita ciptakan 
+            melalui gerakan kolektif Comdev KSE UINSU.
           </p>
 
           <div className="flex justify-center gap-2 mb-8">
@@ -211,10 +249,9 @@ export default function EnhancedStats() {
                     </div>
 
                     <div className="mb-4">
+                      {/* FIX: Menggunakan fungsi renderFormattedValue */}
                       <h3 className="text-4xl font-bold text-gray-800 mb-2 group-hover:text-[#001d47] transition-colors duration-300">
-                        {stat.value.includes("%") || stat.value.includes("+")
-                          ? stat.value
-                          : countedStats[index].toLocaleString() + (stat.value.includes("+") ? "+" : "")}
+                        {renderFormattedValue(index, stat.value)}
                       </h3>
 
                       <div className="w-full bg-gray-200 rounded-full h-1 mb-3">
@@ -296,6 +333,8 @@ export default function EnhancedStats() {
               Aktivitas Real-time
             </h3>
 
+            {/* Catatan: Karena data ini statis, gue biarin di sini. 
+               Kalau mau real-time, perlu integrasi Firestore. */}
             <div className="space-y-4">
               {[
                 {

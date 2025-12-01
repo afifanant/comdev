@@ -11,55 +11,54 @@ import {
   Leaf,
 } from "lucide-react";
 
-// Helper untuk membersihkan dan mendapatkan nilai target yang benar (dipertahankan dari sebelumnya)
+// Helper untuk membersihkan dan mendapatkan nilai target yang benar (dipertahankan)
 const getTargetValue = (value: string): number => {
-  // Hanya ambil digit. Misalnya: '2.500+' -> 2500
   const cleaned = value.replace(/[^0-9]/g, '');
   return parseInt(cleaned, 10);
 };
 
-// Data statistik (SUDAH DISESUAIKAN UNTUK MENGHINDARI OVERCLAIM)
+// Data statistik (SUDAH DISESUAIKAN ULANG AGAR JAUH LEBIH HUMBLE)
 const statsData = [
   {
     icon: <Users className="w-8 h-8" />,
-    value: "2.500+", // Dulu 10.000+, diturunkan ke level lebih realistis
-    label: "Orang Teredukasi",
-    description: "Masyarakat yang telah mengikuti program edukasi kami",
+    value: "1.000+", // Turun dari 2.500+
+    label: "Partisipan Kegiatan", // Lebih sederhana daripada 'Orang Teredukasi'
+    description: "Jumlah total peserta yang terlibat dalam webinar, workshop, dan event",
     color: "emerald",
   },
   {
     icon: <Recycle className="w-8 h-8" />,
-    value: "65%", // Dulu 85%, diturunkan agar lebih achievable
-    label: "Peningkatan Daur Ulang",
-    description: "Kenaikan partisipasi daur ulang di komunitas sasaran",
+    value: "40%", // Turun dari 65%
+    label: "Target Daur Ulang",
+    description: "Persentase kenaikan daur ulang sampah non-organik di area fokus kami",
     color: "blue",
   },
   {
     icon: <TreePine className="w-8 h-8" />,
-    value: "200+", // Dulu 500+, lebih sederhana untuk organisasi mahasiswa
+    value: "100+", // Turun dari 200+
     label: "Pohon Tertanam",
-    description: "Sebagai bagian dari program rehabilitasi lingkungan",
+    description: "Total kontribusi penanaman pohon dalam program rehabilitasi lingkungan",
     color: "green",
   },
   {
     icon: <Award className="w-8 h-8" />,
-    value: "5", // Dulu 12, fokus pada penghargaan inti
-    label: "Penghargaan",
-    description: "Atas inovasi dalam edukasi pengelolaan sampah",
+    value: "3", // Turun dari 5
+    label: "Penghargaan Utama", // Lebih spesifik
+    description: "Apresiasi atas inovasi sosial dan komitmen lingkungan",
     color: "yellow",
   },
   {
     icon: <Heart className="w-8 h-8" />,
-    value: "88%", // Dulu 95%, lebih realistis dan memberi ruang perbaikan
+    value: "80%", // Turun dari 88%, lebih realistis
     label: "Kepuasan Peserta",
-    description: "Tingkat kepuasan peserta terhadap program kami",
+    description: "Tingkat kepuasan rata-rata peserta terhadap seluruh program Comdev",
     color: "pink",
   },
   {
     icon: <Globe className="w-8 h-8" />,
-    value: "18+", // Dulu 50+, fokus pada komunitas yang terlibat aktif
-    label: "Komunitas Terlibat",
-    description: "Yang aktif menerapkan praktik pengelolaan sampah",
+    value: "10+", // Turun dari 18+, fokus pada partner kunci
+    label: "Komunitas Inti Terlibat",
+    description: "Jaringan komunitas yang aktif berkolaborasi dan menerapkan program",
     color: "purple",
   },
 ];
@@ -164,7 +163,7 @@ export default function Stats() {
         return statValue;
     }
 
-    // Tampilkan angka dengan separator ribuan (misal: 2.500)
+    // Tampilkan angka dengan separator ribuan (misal: 1.000)
     let display = currentCount.toLocaleString('id-ID');
 
     // Tambahkan suffix jika perhitungan sudah selesai
@@ -195,12 +194,13 @@ export default function Stats() {
 
           <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6 leading-tight">
             Dampak Nyata dari{" "}
-            <span className="text-emerald-600">Edukasi Sampah</span>
+            <span className="text-emerald-600">Aksi Kolektif</span>
           </h1>
 
+          {/* FIX: Bahasa diubah agar tidak absolut/overclaim */}
           <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Angka-angka ini membuktikan bahwa edukasi yang tepat dapat
-            menciptakan perubahan besar untuk lingkungan kita bersama
+            Angka-angka ini menunjukkan potensi perubahan yang dapat kita ciptakan 
+            melalui edukasi dan partisipasi aktif bersama.
           </p>
         </div>
 

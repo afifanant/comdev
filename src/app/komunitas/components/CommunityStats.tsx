@@ -32,7 +32,7 @@ const statsData: StatCard[] = [
   {
     id: "bank-sampah",
     title: "Bank Sampah SD",
-    value: "5 Sekolah",
+    value: "2 Sekolah",
     change: "+2 Mitra Baru",
     changeType: "increase",
     icon: School, 
@@ -87,13 +87,13 @@ const quickStats = [
   },
   {
     label: "Hasil Panen Lele",
-    value: "200 Kg",
+    value: "900 Kg",
     icon: <Zap className="w-5 h-5 text-teal-600" />,
     color: "text-teal-600",
   },
   {
     label: "Mitra CSR",
-    value: "3 Unit",
+    value: "1 Unit",
     icon: <Handshake className="w-5 h-5 text-green-600" />,
     color: "text-green-600",
   },
