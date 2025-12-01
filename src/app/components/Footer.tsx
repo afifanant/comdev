@@ -5,13 +5,28 @@ import {
   MapPin,
   Facebook,
   Instagram,
-  Twitter,
+  // Twitter dihapus, import TikTok tidak ada di lucide jadi kita buat manual
 } from "lucide-react";
-import Image from "next/image"; // Pakai Image biar logo konsisten
+import Image from "next/image";
+
+// Komponen Icon TikTok Custom (SVG) - Versi TypeScript
+const TikTokIcon = ({ className }: { className?: string }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2" 
+    strokeLinecap="round" 
+    strokeLinejoin="round" 
+    className={className}
+  >
+    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+  </svg>
+);
 
 export default function Footer() {
   return (
-    // UBAH: Background jadi Dark Navy (Hampir hitam tapi ada nuansa biru)
     <footer className="relative w-full bg-[#0b1120] text-white py-16 px-4 border-t border-gray-800">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
@@ -39,15 +54,38 @@ export default function Footer() {
             
             {/* Social Icons */}
             <div className="flex space-x-4">
-              <div className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#001d47] hover:text-white transition-all duration-300 cursor-pointer transform hover:-translate-y-1">
+              {/* Instagram */}
+              <a 
+                href="https://www.instagram.com/comdev_kseuinsu/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#001d47] hover:text-white transition-all duration-300 cursor-pointer transform hover:-translate-y-1"
+                aria-label="Instagram"
+              >
                 <Instagram className="w-5 h-5" />
-              </div>
-              <div className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#001d47] hover:text-white transition-all duration-300 cursor-pointer transform hover:-translate-y-1">
+              </a>
+
+              {/* Facebook (Updated URL & Tag) */}
+              <a 
+                href="https://www.facebook.com/comdev_kseuinsu" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#001d47] hover:text-white transition-all duration-300 cursor-pointer transform hover:-translate-y-1"
+                aria-label="Facebook"
+              >
                 <Facebook className="w-5 h-5" />
-              </div>
-              <div className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#001d47] hover:text-white transition-all duration-300 cursor-pointer transform hover:-translate-y-1">
-                <Twitter className="w-5 h-5" />
-              </div>
+              </a>
+
+              {/* TikTok (New & Custom Icon) */}
+              <a 
+                href="https://www.tiktok.com/@comdev_kseuinsu" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#001d47] hover:text-white transition-all duration-300 cursor-pointer transform hover:-translate-y-1"
+                aria-label="TikTok"
+              >
+                <TikTokIcon className="w-5 h-5" />
+              </a>
             </div>
           </div>
 
@@ -95,11 +133,11 @@ export default function Footer() {
               </div>
               <div className="flex items-center space-x-3 group cursor-pointer">
                 <Mail className="w-5 h-5 text-blue-500 group-hover:text-blue-400" />
-                <span className="group-hover:text-gray-300 transition-colors">comdev@kseuishu.ac.id</span>
+                <span className="group-hover:text-gray-300 transition-colors">pkseuinsucomdev@gmail.com</span>
               </div>
               <div className="flex items-center space-x-3 group cursor-pointer">
                 <Phone className="w-5 h-5 text-blue-500 group-hover:text-blue-400" />
-                <span className="group-hover:text-gray-300 transition-colors">+62 812-3456-7890</span>
+                <span className="group-hover:text-gray-300 transition-colors">+62 823-6146-4415</span>
               </div>
             </div>
           </div>
