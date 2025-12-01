@@ -10,7 +10,6 @@ const FloatingCharacter = () => {
   const [isAnimating, setIsAnimating] = useState(false);
 
   // UBAH: Dialog lebih natural, humble, dan "manusiawi".
-  // Gak ada angka lebay, fokus ke ajakan dan info ringkas.
   const dialogs = [
     {
       text: "Halo! Selamat datang di rumah Comdev KSE UINSU 👋",
@@ -128,21 +127,20 @@ const FloatingCharacter = () => {
         </div>
       )}
 
-      {/* Character / Assistant Icon */}
+      {/* Character / Assistant Icon - FIX: Menggunakan fill prop */}
       <div className="relative group">
         <div
           className="cursor-pointer transition-all duration-300 hover:scale-105 active:scale-95 flex items-center justify-center"
           onClick={handleCharacterClick}
         >
-          {/* Menggunakan Next/Image untuk optimasi */}
           <div className="w-16 h-16 relative filter drop-shadow-lg">
              <Image 
                 src="/char.png" 
                 alt="Comdev Assistant" 
-                width={64}
-                height={64}
-                className="object-contain w-full h-full hover:brightness-110 transition-all"
+                fill // Menggunakan fill prop untuk mengisi container
+                className="object-contain hover:brightness-110 transition-all" // Hanya object-contain, tanpa w-full h-full
                 priority
+                unoptimized
              />
           </div>
         </div>
