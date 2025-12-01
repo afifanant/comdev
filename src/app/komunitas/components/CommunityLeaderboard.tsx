@@ -28,96 +28,174 @@ interface LeaderboardUser {
   isCurrentUser?: boolean;
 }
 
-// DATA RELAWAN TERBAIK (COMDEV)
+// DATA RELAWAN TERBAIK (COMDEV) - DISESUAIKAN DENGAN STRUKTUR BARU
 const leaderboardData: LeaderboardUser[] = [
   {
     id: 1,
     rank: 1,
-    name: "Sarah Amalia",
-    role: "Koord. Lingkungan",
-    avatar: "https://i.pravatar.cc/150?u=sarah",
-    points: 450, // Skor Kontribusi
-    level: 12, // Program diikuti
-    badges: ["👑", "🌱", "🔥"],
-    streak: 120, // Jam Pengabdian
-    completedChallenges: 8,
-    joinDate: "Jan 2024",
+    name: "Afif Ananta", // Ketua - Rank 1
+    role: "Ketua Comdev",
+    avatar: "https://i.pravatar.cc/150?u=afifananta",
+    points: 1000, // Skor tertinggi untuk Ketua
+    level: 20,
+    badges: ["👑", "🔥", "💡"],
+    streak: 200, 
+    completedChallenges: 15,
+    joinDate: "KSE.2490.14748",
   },
   {
     id: 2,
-    name: "Budi Santoso",
     rank: 2,
-    role: "Divisi Pendidikan",
-    avatar: "https://i.pravatar.cc/150?u=budi",
-    points: 380,
-    level: 10,
-    badges: ["🥈", "📚", "⚡"],
-    streak: 98,
-    completedChallenges: 6,
-    joinDate: "Feb 2024",
+    name: "Hany Arifya", // Sekretaris
+    role: "Sekretaris Comdev",
+    avatar: "https://i.pravatar.cc/150?u=hany",
+    points: 850,
+    level: 18,
+    badges: ["🥈", "📝", "⚡"],
+    streak: 160,
+    completedChallenges: 12,
+    joinDate: "KSE.249014753",
   },
   {
     id: 3,
     rank: 3,
-    name: "Rina Kartika",
-    role: "Anggota Aktif",
-    avatar: "https://i.pravatar.cc/150?u=rina",
-    points: 350,
-    level: 9,
-    badges: ["🥉", "♻️", "⭐"],
-    streak: 85,
-    completedChallenges: 5,
-    joinDate: "Jan 2024",
+    name: "Nazar Alwi Yahya", // Bendahara
+    role: "Bendahara Comdev",
+    avatar: "https://i.pravatar.cc/150?u=nazar",
+    points: 750,
+    level: 16,
+    badges: ["🥉", "💰", "⭐"],
+    streak: 140,
+    completedChallenges: 10,
+    joinDate: "KSE.2490.14771",
   },
   {
     id: 4,
     rank: 4,
-    name: "Andi Pratama",
-    role: "Relawan Magang",
-    avatar: "https://i.pravatar.cc/150?u=andi",
-    points: 210,
-    level: 5,
-    badges: ["🌟", "💻"],
-    streak: 40,
-    completedChallenges: 3,
-    joinDate: "Mar 2024",
+    name: "Angga Wardana Yansuri Sirait",
+    role: "PIC Eco Lele",
+    avatar: "https://i.pravatar.cc/150?u=angga",
+    points: 680,
+    level: 14,
+    badges: ["🐟", "🌱", "🛠️"],
+    streak: 120,
+    completedChallenges: 9,
+    joinDate: "KSE.2590.15883",
   },
   {
     id: 5,
-    rank: 12,
-    name: "Kamu",
-    role: "Relawan Baru",
-    avatar: "https://i.pravatar.cc/150?u=me",
+    rank: 5,
+    name: "Esti Kurnia Dara",
+    role: "PIC Eco Lele",
+    avatar: "https://i.pravatar.cc/150?u=esti",
+    points: 620,
+    level: 13,
+    badges: ["🐟", "📸", "⚡"],
+    streak: 105,
+    completedChallenges: 8,
+    joinDate: "KSE.2590.15881",
+  },
+  {
+    id: 6,
+    rank: 6,
+    name: "Muhammad Akbar Randhika Defi",
+    role: "PIC Bank Sampah",
+    avatar: "https://i.pravatar.cc/150?u=akbar",
+    points: 550,
+    level: 11,
+    badges: ["♻️", "💻", "💡"],
+    streak: 90,
+    completedChallenges: 7,
+    joinDate: "KSE.2590.15882",
+  },
+  {
+    id: 7,
+    rank: 7,
+    name: "Anissya Fahira Pasaribu",
+    role: "PIC Bank Sampah",
+    avatar: "https://i.pravatar.cc/150?u=anissya",
+    points: 500,
+    level: 10,
+    badges: ["♻️", "📚", "⭐"],
+    streak: 85,
+    completedChallenges: 6,
+    joinDate: "KSE.2590.15876",
+  },
+  {
+    id: 8,
+    rank: 8,
+    name: "Ayu Aida Fitri",
+    role: "Anggota Berkomdev", // FIX: Diganti dari PIC Berkomdev
+    avatar: "https://i.pravatar.cc/150?u=ayu",
+    points: 400,
+    level: 8,
+    badges: ["🌟", "🤝"],
+    streak: 70,
+    completedChallenges: 5,
+    joinDate: "KSE.2590.15866",
+  },
+  {
+    id: 9,
+    rank: 9,
+    name: "Fatimah Syam BR. Sibarani",
+    role: "Anggota Berkomdev", // FIX: Diganti dari PIC Berkomdev
+    avatar: "https://i.pravatar.cc/150?u=fatimah",
+    points: 350,
+    level: 7,
+    badges: ["🌱", "📚"],
+    streak: 60,
+    completedChallenges: 4,
+    joinDate: "KSE.2590.1588",
+  },
+  {
+    id: 10,
+    rank: 10,
+    name: "Lidya Rosnoviana",
+    role: "Anggota Berkomdev", // FIX: Diganti dari PIC Berkomdev
+    avatar: "https://i.pravatar.cc/150?u=lidya",
+    points: 250,
+    level: 5,
+    badges: ["✨"],
+    streak: 40,
+    completedChallenges: 3,
+    joinDate: "KSE.2590.16462",
+  },
+  {
+    id: 11,
+    rank: 11,
+    name: "Relawan Lain",
+    role: "Anggota Berkomdev",
+    avatar: "https://i.pravatar.cc/150?u=current",
     points: 50,
     level: 1,
-    badges: ["🌱"],
+    badges: ["👋"],
     streak: 5,
-    completedChallenges: 1,
-    joinDate: "Apr 2024",
-    isCurrentUser: true,
+    completedChallenges: 0,
+    joinDate: "Mei 2024",
+    isCurrentUser: true, 
   },
 ];
 
 const achievements = [
   {
-    title: "Relawan Teladan",
+    title: "Ketua Teladan",
     description: "Kontribusi jam sosial tertinggi bulan ini",
     icon: "👑",
-    winner: "Sarah Amalia",
-    points: "120 Jam",
+    winner: "Afif Ananta",
+    points: "200 Jam",
   },
   {
-    title: "Inisiator Program",
-    description: "Pengusul ide program terbanyak",
-    icon: "💡",
-    winner: "Budi Santoso",
-    points: "3 Proposal",
+    title: "PIC Terbaik (Eco Lele)",
+    description: "Program dengan dampak lingkungan tertinggi",
+    icon: "🐟",
+    winner: "Angga Wardana Yansuri Sirait & Esti Kurnia Dara",
+    points: "Pencapaian 90%",
   },
   {
-    title: "Penggerak Massa",
-    description: "Mengajak relawan baru terbanyak",
+    title: "Penggerak Relawan Baru",
+    description: "Anggota dengan rekrutmen relawan terbanyak",
     icon: "🔥",
-    winner: "Rina Kartika",
+    winner: "Hany Arifya",
     points: "15 Orang",
   },
 ];
@@ -131,6 +209,14 @@ export default function CommunityLeaderboard() {
     "monthly"
   );
   const [hoveredUser, setHoveredUser] = useState<number | null>(null);
+
+  // WA Link Configuration
+  const WA_NUMBER = "6282361464415";
+  const WA_MESSAGE_ENCODED = encodeURIComponent(
+    "Halo Admin Comdev KSE UINSU, saya tertarik untuk gabung/berkolaborasi setelah melihat daftar Tim Inti di website. Mohon info pendaftarannya. Terima kasih!"
+  );
+  const WA_LINK = `https://wa.me/${WA_NUMBER}?text=${WA_MESSAGE_ENCODED}`;
+
 
   const getRankIcon = (rank: number) => {
     switch (rank) {
@@ -173,17 +259,17 @@ export default function CommunityLeaderboard() {
           <div className="inline-flex items-center gap-2 bg-emerald-100 px-4 py-2 rounded-full mb-6 border border-emerald-200">
             <Trophy className="w-5 h-5 text-emerald-600 animate-pulse" />
             <span className="text-emerald-700 font-bold text-sm">
-              Hall of Fame
+              Tim Komunitas
             </span>
           </div>
 
           <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6 leading-tight">
-            Relawan <span className="text-emerald-600">Terbaik</span>
+            Tim Inti <span className="text-emerald-600">Comdev</span>
           </h1>
 
           <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed mb-8">
-            Apresiasi untuk para penggerak perubahan yang konsisten memberikan dampak 
-            bagi masyarakat dan lingkungan.
+            Daftar pengurus dan kontributor utama Comdev KSE UINSU beserta skor apresiasi
+            atas peran aktif mereka dalam setiap program.
           </p>
         </div>
 
@@ -223,7 +309,7 @@ export default function CommunityLeaderboard() {
               <div className="p-6 border-b border-gray-100 bg-emerald-50/30">
                 <h3 className="text-lg font-bold text-gray-800 flex items-center gap-2">
                   <Trophy className="w-5 h-5 text-yellow-500" />
-                  Top Kontributor
+                  Daftar Pengurus & Kontributor
                 </h3>
               </div>
 
@@ -331,7 +417,7 @@ export default function CommunityLeaderboard() {
                         </p>
                         <div className="flex items-center justify-between text-xs border-t border-gray-200 pt-2">
                           <span className="font-semibold text-emerald-700">
-                             {achievement.winner}
+                              {achievement.winner}
                           </span>
                           <span className="text-gray-500 font-medium bg-gray-100 px-1.5 py-0.5 rounded">
                             {achievement.points}
@@ -344,25 +430,35 @@ export default function CommunityLeaderboard() {
               </div>
             </div>
 
-            {/* Quick Actions - Warna Hijau */}
+            {/* Quick Actions - FIX: Diubah menjadi link WA */}
             <div className="bg-emerald-600 rounded-3xl p-6 text-white relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
                 
                 <h3 className="text-lg font-bold mb-4 flex items-center gap-2 relative z-10">
-                    <Users className="w-5 h-5 text-yellow-300" />
-                    Gabung Relawan
+                  <Users className="w-5 h-5 text-yellow-300" />
+                  Ayo Berkolaborasi
                 </h3>
                 <p className="text-sm text-emerald-100 mb-4 relative z-10">
-                    Ingin nama kamu ada di papan peringkat? Mulai kontribusi sekarang!
+                  Tertarik gabung tim inti atau menjadi relawan umum? Hubungi kami sekarang!
                 </p>
 
                 <div className="space-y-2 relative z-10">
-                    <button className="w-full bg-white text-emerald-700 py-2.5 px-4 rounded-xl font-bold hover:bg-emerald-50 transition-colors text-sm shadow-lg">
-                        Daftar Kegiatan
-                    </button>
-                    <button className="w-full bg-transparent border border-white/30 text-white py-2.5 px-4 rounded-xl font-medium hover:bg-white/10 transition-colors text-sm">
-                        Lihat Poin Saya
-                    </button>
+                  {/* Link WhatsApp */}
+                  <a 
+                    href={WA_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full bg-white text-emerald-700 py-2.5 px-4 rounded-xl font-bold hover:bg-emerald-50 transition-colors text-sm shadow-lg flex items-center justify-center"
+                  >
+                    Kontak Rekrutmen via WhatsApp
+                  </a>
+                  {/* Link Lihat Daftar Program (Tombol sekunder diubah jadi link) */}
+                  <a 
+                    href="/komunitas#challenge-section" // Mengarah ke section program di halaman Komunitas
+                    className="w-full bg-transparent border border-white/30 text-white py-2.5 px-4 rounded-xl font-medium hover:bg-white/10 transition-colors text-sm flex items-center justify-center"
+                  >
+                      Lihat Daftar Program
+                  </a>
                 </div>
             </div>
           </div>

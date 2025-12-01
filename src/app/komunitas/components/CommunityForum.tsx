@@ -33,7 +33,7 @@ interface ForumPost {
   tags: string[];
 }
 
-// DATA DISKUSI COMDEV
+// DATA DISKUSI COMDEV - DISESUAIKAN DENGAN NAMA PENGURUS
 const forumPosts: ForumPost[] = [
   {
     id: 1,
@@ -41,10 +41,10 @@ const forumPosts: ForumPost[] = [
     content:
       "Rekan-rekan, berikut adalah poin evaluasi dari kunjungan terakhir ke kandang maggot. Ada beberapa kendala suhu yang perlu kita diskusikan solusinya...",
     author: {
-      name: "Fajar Siddiq",
-      avatar: "https://i.pravatar.cc/150?u=fajar",
-      badge: "Koordinator",
-      level: 15,
+      name: "Afif Ananta", // Ketua
+      avatar: "https://i.pravatar.cc/150?u=afifananta",
+      badge: "Ketua Comdev",
+      level: 20,
     },
     category: "Program Kerja",
     replies: 24,
@@ -61,10 +61,10 @@ const forumPosts: ForumPost[] = [
     content:
       "Halo Beswan KSE! Jadwal wawancara perpanjangan sudah keluar. Silakan cek lampiran di bawah dan persiapkan berkas laporan kalian ya.",
     author: {
-      name: "Admin KSE",
-      avatar: "https://i.pravatar.cc/150?u=admin",
-      badge: "Pengurus Inti",
-      level: 20,
+      name: "Hany Arifya", // Sekretaris
+      avatar: "https://i.pravatar.cc/150?u=hany",
+      badge: "Sekretaris Comdev",
+      level: 18,
     },
     category: "Info Beasiswa",
     replies: 89,
@@ -81,10 +81,10 @@ const forumPosts: ForumPost[] = [
     content:
       "Saya melihat potensi eceng gondok di sungai dekat desa binaan cukup melimpah. Bagaimana kalau kita buat pelatihan anyaman untuk ibu-ibu PKK?",
     author: {
-      name: "Siti Rahma",
-      avatar: "https://i.pravatar.cc/150?u=siti",
-      badge: "Relawan Aktif",
-      level: 8,
+      name: "Anissya Fahira Pasaribu", // PIC Bank Sampah
+      avatar: "https://i.pravatar.cc/150?u=anissya",
+      badge: "PIC Bank Sampah",
+      level: 10,
     },
     category: "Inovasi Sosial",
     replies: 15,
@@ -101,10 +101,10 @@ const forumPosts: ForumPost[] = [
     content:
       "Siapa yang mau gabung panitia Comdev Camp tahun ini? Yuk kumpul ide tema dan lokasi yang seru tapi tetap edukatif.",
     author: {
-      name: "Rizky Pratama",
-      avatar: "https://i.pravatar.cc/150?u=rizky",
-      badge: "Member",
-      level: 5,
+      name: "Angga Wardana Yansuri Sirait", // PIC Eco Lele
+      avatar: "https://i.pravatar.cc/150?u=angga",
+      badge: "PIC Eco Lele",
+      level: 14,
     },
     category: "Diskusi Umum",
     replies: 56,
@@ -132,10 +132,14 @@ export default function CommunityForum() {
     "latest"
   );
 
-  // MAP WARNA BADGE (TEMA HIJAU/EMERALD)
+  // MAP WARNA BADGE (TEMA HIJAU/EMERALD) - Disesuaikan untuk roles yang baru
   const getBadgeColor = (badge: string) => {
     const colors = {
-      "Koordinator": "bg-emerald-100 text-emerald-700 border-emerald-200",
+      "Ketua Comdev": "bg-red-500 text-white border-red-600",
+      "Sekretaris Comdev": "bg-yellow-500 text-white border-yellow-600",
+      "PIC Eco Lele": "bg-teal-500 text-white border-teal-600",
+      "PIC Bank Sampah": "bg-blue-500 text-white border-blue-600",
+      // Default roles
       "Pengurus Inti": "bg-emerald-600 text-white border-emerald-600",
       "Relawan Aktif": "bg-green-100 text-green-700 border-green-200",
       "Member": "bg-gray-100 text-gray-700 border-gray-200",

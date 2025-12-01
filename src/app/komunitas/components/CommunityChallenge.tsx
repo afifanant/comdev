@@ -28,7 +28,7 @@ interface Challenge {
   tags: string[];
 }
 
-// DATA PROGRAM COMDEV
+// DATA PROGRAM COMDEV - SUDAH DISESUAIKAN
 const challenges: Challenge[] = [
   {
     id: 1,

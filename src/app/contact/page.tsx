@@ -100,7 +100,7 @@ export default function ContactPage() {
   // Nomor WhatsApp yang benar
   const WHATSAPP_NUMBER = "6282361464415"; 
   const WHATSAPP_DISPLAY = "+62 823-6146-4415";
-  const CONTACT_EMAIL = "comdev.kseuinsu@gmail.com";
+  const CONTACT_EMAIL = "pkseuinsucomdev@gmail.com";
 
   const handleInputChange = (
     e: React.ChangeEvent<

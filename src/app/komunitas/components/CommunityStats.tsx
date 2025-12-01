@@ -1,6 +1,14 @@
 "use client";
 import { useState } from "react";
 import {
+  Target,
+  Calendar,
+  Users,
+  Trophy,
+  Clock,
+  Filter,
+  Lightbulb,
+  // Tambahkan icon untuk data Progja
   TrendingUp,
   Zap,
   Star,
@@ -12,30 +20,37 @@ import {
   Bug,     // Icon Maggot
   Sprout,  // Icon Pertanian
   School,  // Icon Sekolah (untuk Bank Sampah SD)
-  Users,
-  MapPin
+  MapPin,
+  // Icon yang dipakai di filter/header
+  MessageCircle,
+  ThumbsUp,
+  Eye,
+  Pin,
+  Flame,
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react"; // Import tipe untuk Icon
 
-interface StatCard {
+// INTERFACE BARU UNTUK PROGRAM KERJA (PROGJA) STATISTIK
+interface ProgjaCard {
   id: string;
   title: string;
   value: string;
   change: string;
   changeType: "increase" | "decrease" | "neutral";
-  icon: any;
+  icon: LucideIcon; // Menggunakan LucideIcon sebagai tipe
   color: string;
   description: string;
 }
 
-// DATA STATISTIK PROGRAM KERJA (PROGJA) COMDEV
-const statsData: StatCard[] = [
+// DATA PROGRAM KERJA (PROGJA) COMDEV - MENGGANTIKAN DATA CHALLENGES
+const progjaData: ProgjaCard[] = [
   {
     id: "bank-sampah",
     title: "Bank Sampah SD",
     value: "2 Sekolah",
     change: "+2 Mitra Baru",
     changeType: "increase",
-    icon: School, 
+    icon: School, // Diambil dari import
     color: "emerald", // Hijau Utama
     description: "Edukasi pemilahan & tabungan sampah siswa",
   },
@@ -108,7 +123,14 @@ const trendingTopics = [
   { topic: "Penimbangan Nasabah", posts: "Bank Sampah", trend: "up" },
 ];
 
-export default function CommunityStats() {
+const periods = [
+  { id: "week", label: "Minggu Ini" },
+  { id: "month", label: "Bulan Ini" },
+  { id: "year", label: "Tahun Ini" },
+];
+
+
+export default function CommunityChallenge() { // Nama komponen dipertahankan CommunityChallenge
   const [selectedPeriod, setSelectedPeriod] = useState<
     "week" | "month" | "year"
   >("month");
@@ -121,6 +143,7 @@ export default function CommunityStats() {
         light: "bg-emerald-50",
         text: "text-emerald-700",
         border: "border-emerald-200",
+        bar: "bg-emerald-600",
         iconBg: "bg-emerald-600",
       },
       teal: {
@@ -128,6 +151,7 @@ export default function CommunityStats() {
         light: "bg-teal-50",
         text: "text-teal-700",
         border: "border-teal-200",
+        bar: "bg-teal-600",
         iconBg: "bg-teal-600",
       },
       green: {
@@ -135,6 +159,7 @@ export default function CommunityStats() {
         light: "bg-green-50",
         text: "text-green-700",
         border: "border-green-200",
+        bar: "bg-green-600",
         iconBg: "bg-green-600",
       },
       lime: {
@@ -142,6 +167,7 @@ export default function CommunityStats() {
         light: "bg-lime-50",
         text: "text-lime-700",
         border: "border-lime-200",
+        bar: "bg-lime-500",
         iconBg: "bg-lime-500",
       },
     };
@@ -149,14 +175,14 @@ export default function CommunityStats() {
   };
 
   return (
-    <section className="w-full py-20 px-4">
+    <section className="w-full py-20 px-4 bg-white">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 bg-emerald-50 px-4 py-2 rounded-full mb-6 border border-emerald-100">
-            <TrendingUp className="w-5 h-5 text-emerald-600 animate-pulse" />
-            <span className="text-emerald-700 font-medium text-sm">
-              Laporan Program Kerja
+            <Target className="w-5 h-5 text-emerald-600 animate-pulse" />
+            <span className="text-emerald-700 font-bold text-sm">
+              Program Unggulan
             </span>
           </div>
 
@@ -173,11 +199,7 @@ export default function CommunityStats() {
         <div className="flex justify-center mb-12">
           <div className="bg-white rounded-2xl p-2 shadow-sm border border-gray-200">
             <div className="flex gap-2">
-              {[
-                { id: "week", label: "Minggu Ini" },
-                { id: "month", label: "Bulan Ini" },
-                { id: "year", label: "Tahun Ini" },
-              ].map((period) => (
+              {periods.map((period) => (
                 <button
                   key={period.id}
                   onClick={() => setSelectedPeriod(period.id as any)}
@@ -196,7 +218,7 @@ export default function CommunityStats() {
 
         {/* Main Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-12">
-          {statsData.map((stat) => {
+          {progjaData.map((stat) => {
             const Icon = stat.icon;
             const colors = getColorClasses(stat.color);
             return (
@@ -322,6 +344,28 @@ export default function CommunityStats() {
                   </div>
                 ))}
               </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Call to Action Bottom (Dipertahankan) */}
+        <div className="text-center mt-10">
+          <div className="bg-emerald-600 rounded-3xl p-8 max-w-4xl mx-auto shadow-2xl relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+            
+            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+                <div className="text-left">
+                    <h3 className="text-xl md:text-2xl font-bold text-white mb-2 flex items-center gap-2">
+                        <Lightbulb className="w-6 h-6 text-yellow-300" />
+                        Punya Ide Proyek?
+                    </h3>
+                    <p className="text-emerald-50 text-sm md:text-base max-w-lg">
+                        Kami terbuka untuk kolaborasi! Usulkan ide kreatifmu untuk kemajuan desa binaan atau lingkungan kampus.
+                    </p>
+                </div>
+                <button className="bg-white text-emerald-700 px-6 py-3 rounded-xl font-bold hover:bg-emerald-50 transition-all duration-300 shadow-lg whitespace-nowrap">
+                    Ajukan Proposal
+                </button>
             </div>
           </div>
         </div>
