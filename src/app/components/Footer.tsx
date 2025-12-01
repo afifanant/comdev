@@ -120,7 +120,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact */}
+{/* Contact */}
           <div>
             <h3 className="font-semibold text-lg mb-4 text-white">Hubungi Kami</h3>
             <div className="space-y-4 text-gray-400">
@@ -131,14 +131,26 @@ export default function Footer() {
                   Medan, Indonesia
                 </span>
               </div>
-              <div className="flex items-center space-x-3 group cursor-pointer">
+              
+              {/* FIX: ICON EMAIL DIUBAH MENJADI LINK MAILTO: */}
+              <a 
+                href="mailto:pkseuinsucomdev@gmail.com"
+                className="flex items-center space-x-3 group cursor-pointer"
+                target="_blank" // Buka di tab baru (meskipun mailto, ini praktik standar)
+                rel="noopener noreferrer"
+              >
                 <Mail className="w-5 h-5 text-blue-500 group-hover:text-blue-400" />
                 <span className="group-hover:text-gray-300 transition-colors">pkseuinsucomdev@gmail.com</span>
-              </div>
-              <div className="flex items-center space-x-3 group cursor-pointer">
+              </a>
+
+              {/* FIX: ICON TELEPON JUGA HARUS JADI LINK TEL: */}
+              <a 
+                href="tel:+6282361464415"
+                className="flex items-center space-x-3 group cursor-pointer"
+              >
                 <Phone className="w-5 h-5 text-blue-500 group-hover:text-blue-400" />
                 <span className="group-hover:text-gray-300 transition-colors">+62 823-6146-4415</span>
-              </div>
+              </a>
             </div>
           </div>
         </div>
