@@ -179,8 +179,14 @@ export default function SolusiKreatif() {
   };
 
   const closeModal = (e?: React.MouseEvent) => {
-    // Prevent closing when clicking inside modal content
+    // Hanya menutup jika mengklik overlay.
     if (e && e.target !== e.currentTarget) return;
+    setShowModal(false);
+    setSelectedSolution(null);
+  };
+  
+  // Fungsi penutup eksplisit untuk tombol X
+  const handleCloseClick = () => {
     setShowModal(false);
     setSelectedSolution(null);
   };
@@ -394,10 +400,10 @@ export default function SolusiKreatif() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent rounded-t-3xl" />
 
-                {/* Close Button */}
+                {/* Close Button - FIX: Menggunakan handleCloseClick */}
                 <button
-                  onClick={closeModal}
-                  className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm p-2 rounded-full hover:bg-white transition-colors shadow-lg"
+                  onClick={handleCloseClick} 
+                  className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm p-2 rounded-full hover:bg-white transition-colors shadow-lg cursor-pointer"
                 >
                   <X className="w-4 h-4 text-gray-700" />
                 </button>

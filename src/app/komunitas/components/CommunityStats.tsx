@@ -357,7 +357,7 @@ export default function CommunityChallenge() { // Nama komponen dipertahankan Co
                 <div className="text-left">
                     <h3 className="text-xl md:text-2xl font-bold text-white mb-2 flex items-center gap-2">
                         <Lightbulb className="w-6 h-6 text-yellow-300" />
-                        Punya Ide Proyek?
+                        Punya Ide Program?
                     </h3>
                     <p className="text-emerald-50 text-sm md:text-base max-w-lg">
                         Kami terbuka untuk kolaborasi! Usulkan ide kreatifmu untuk kemajuan desa binaan atau lingkungan kampus.

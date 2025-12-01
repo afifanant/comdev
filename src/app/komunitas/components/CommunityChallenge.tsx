@@ -240,7 +240,7 @@ export default function CommunityChallenge() {
           </div>
 
           <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6 leading-tight">
-            Proyek & Aksi <span className="text-emerald-600">Nyata</span>
+            Program & Aksi <span className="text-emerald-600">Nyata</span>
           </h1>
 
           <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed mb-8">
@@ -475,7 +475,7 @@ export default function CommunityChallenge() {
                 <div className="text-left">
                     <h3 className="text-xl md:text-2xl font-bold text-white mb-2 flex items-center gap-2">
                         <Lightbulb className="w-6 h-6 text-yellow-300" />
-                        Punya Ide Proyek?
+                        Punya Ide Program?
                     </h3>
                     <p className="text-emerald-50 text-sm md:text-base max-w-lg">
                         Kami terbuka untuk kolaborasi! Usulkan ide kreatifmu untuk kemajuan desa binaan atau lingkungan kampus.

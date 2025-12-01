@@ -47,7 +47,7 @@ export default function KomunitasPage() {
       action: () => scrollToSection("leaderboard-section"),
     },
     ctaSecondary: {
-      text: "Lihat Proyek",
+      text: "Lihat Program",
       // FIX: Scroll ke Challenge (daftar program)
       action: () => scrollToSection("challenge-section"),
     },

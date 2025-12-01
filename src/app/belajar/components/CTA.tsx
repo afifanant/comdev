@@ -1,7 +1,23 @@
 "use client";
-import { ArrowRight, Download, Brain, ArrowDown } from "lucide-react";
+import { Brain, ArrowRight } from "lucide-react"; // ArrowDown diganti dengan ArrowRight/dihapus
 
 export default function CTA() {
+  // 1. Definisikan fungsi handler untuk tombol
+  const handleInquiry = () => {
+    // Tombol ini berfungsi!
+    console.log("Pertanyaan tentang dekomposisi sampah non-organik diajukan.");
+    
+    // Logika nyata di sini:
+    // Contoh 1: Menggulir ke bagian berikutnya di halaman (jika ini komponen di tengah halaman)
+    // document.getElementById('section-berikutnya').scrollIntoView({ behavior: 'smooth' });
+
+    // Contoh 2: Menampilkan alert/modal
+    alert("Benar! Sekarang mari kita lihat grafik waktu urai sampah anorganik.");
+    
+    // Contoh 3: Navigasi ke halaman detail (jika menggunakan router, misal next/link)
+    // router.push('/detail-dekomposisi');
+  };
+
   return (
     <section className="relative w-full py-20 px-4 bg-gradient-to-br from-yellow-500 to-amber-600 overflow-hidden">
       <div className="max-w-4xl mx-auto text-center relative z-10">
@@ -20,9 +36,13 @@ export default function CTA() {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center ">
-          <button className="bg-white text-yellow-600 font-semibold py-4 px-8 cursor-pointer rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2 justify-center">
+          {/* 2. Tambahkan properti onClick dan gunakan ArrowRight yang lebih umum untuk aksi */}
+          <button 
+            onClick={handleInquiry} // <-- Fungsionalitas ditambahkan di sini
+            className="bg-white text-yellow-600 font-semibold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2 justify-center"
+          >
             <span>Iya juga, gimana dong?</span>
-            <ArrowDown className="w-5 h-5" />
+            <ArrowRight className="w-5 h-5" /> {/* Ganti ikon untuk menyiratkan "lanjut" */}
           </button>
         </div>
       </div>

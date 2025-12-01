@@ -1,10 +1,18 @@
 import { Recycle, ArrowRight, Lightbulb } from "lucide-react";
 
+/**
+ * Komponen Panduan Pengelolaan Sampah
+ * Menampilkan ringkasan cara mengelola berbagai jenis sampah.
+ * Menggunakan Tailwind CSS untuk styling.
+ */
 export default function WasteManagementGuide() {
+  // Tentukan path navigasi untuk CTA
+  const actionLink = "/panduan-aksi-nyata-lengkap"; // Ganti dengan path yang sesuai di aplikasi Anda
+
   return (
     <section className="w-full py-20 px-4">
       <div className="max-w-6xl mx-auto">
-        {/* Header */}
+        {/* Header Section */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 bg-yellow-100 px-4 py-2 rounded-full mb-6">
             <Recycle className="w-5 h-5 text-yellow-600 animate-pulse" />
@@ -24,9 +32,10 @@ export default function WasteManagementGuide() {
           </p>
         </div>
 
-        {/* Main Content */}
+        {/* Main Content: Waste Categories Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {/* Sampah Organik */}
+          
+          {/* Sampah Organik (Kuning) */}
           <div className="group bg-yellow-50 border-2 border-yellow-200 rounded-3xl p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
             <div className="w-16 h-16 bg-yellow-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
               <span className="text-white text-3xl">🍃</span>
@@ -54,7 +63,7 @@ export default function WasteManagementGuide() {
             </ul>
           </div>
 
-          {/* Sampah Anorganik */}
+          {/* Sampah Anorganik (Biru) */}
           <div className="group bg-blue-50 border-2 border-blue-200 rounded-3xl p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
             <div className="w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
               <span className="text-white text-3xl">♻️</span>
@@ -82,7 +91,7 @@ export default function WasteManagementGuide() {
             </ul>
           </div>
 
-          {/* Sampah B3 */}
+          {/* Sampah B3 (Merah) */}
           <div className="group bg-red-50 border-2 border-red-200 rounded-3xl p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
             <div className="w-16 h-16 bg-red-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
               <span className="text-white text-3xl">⚠️</span>
@@ -108,7 +117,7 @@ export default function WasteManagementGuide() {
             </ul>
           </div>
 
-          {/* Sampah Elektronik */}
+          {/* Sampah Elektronik (Ungu) */}
           <div className="group bg-purple-50 border-2 border-purple-200 rounded-3xl p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
             <div className="w-16 h-16 bg-purple-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
               <span className="text-white text-3xl">📱</span>
@@ -137,7 +146,7 @@ export default function WasteManagementGuide() {
           </div>
         </div>
 
-        {/* Bottom Call to Action */}
+        {/* Bottom Call to Action (CTA) */}
         <div className="bg-gradient-to-r from-yellow-100 to-yellow-100 border border-yellow-200 rounded-3xl p-8 max-w-4xl mx-auto">
           <div className="flex items-center justify-center mb-4">
             <div className="w-16 h-16 bg-yellow-500 rounded-2xl flex items-center justify-center">
@@ -156,12 +165,16 @@ export default function WasteManagementGuide() {
           </p>
 
           <div className="text-center">
-            <div className="inline-flex items-center gap-2 bg-yellow-500 text-white px-6 py-3 rounded-full font-medium hover:bg-yellow-600 transition-all duration-300 cursor-pointer group">
+            {/* Tombol yang kini berfungsi sebagai tautan (<a>) */}
+            <a
+              href={actionLink} // Fungsionalitas ditambahkan di sini
+              className="inline-flex items-center gap-2 bg-yellow-500 text-white px-6 py-3 rounded-full font-medium hover:bg-yellow-600 transition-all duration-300 group"
+            >
               <span>Mulai Kelola Sampahmu Sekarang!</span>
               <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center group-hover:rotate-12 transition-transform duration-300">
                 <span className="text-sm">🌱</span>
               </div>
-            </div>
+            </a>
           </div>
         </div>
       </div>

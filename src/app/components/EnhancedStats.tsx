@@ -1,6 +1,6 @@
 "use client"
 import { useState, useEffect } from "react"
-import Link from "next/link" 
+import Link from "next/link" // IMPORT LINK DARI NEXT.JS
 import { Users, Recycle, TreePine, Award, TrendingUp, Globe, Heart, Zap, Leaf } from "lucide-react"
 
 // Helper untuk membersihkan dan mendapatkan nilai target yang benar
@@ -315,12 +315,12 @@ export default function EnhancedStats() {
                 sertifikat kegiatan!
               </p>
 
-              {/* PERUBAHAN DI SINI: MENGGUNAKAN NEXT/LINK */}
+              {/* PERUBAHAN DI SINI: Ganti teks tombol dari "Daftar Member" menjadi "Ayo Berkolaborasi" */}
               <Link
                 href="/komunitas"
                 className="bg-white text-[#001d47] px-8 py-3 rounded-full font-bold hover:bg-blue-50 transition-all duration-300 hover:scale-105 shadow-lg flex items-center gap-2 inline-flex"
               >
-                Daftar Member
+                <span>Ayo Berkolaborasi</span>
                 <TrendingUp className="w-4 h-4" />
               </Link>
             </div>

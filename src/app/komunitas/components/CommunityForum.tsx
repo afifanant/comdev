@@ -37,7 +37,7 @@ interface ForumPost {
 const forumPosts: ForumPost[] = [
   {
     id: 1,
-    title: "Evaluasi Proyek Maggot Desa Martubung - Q1 2025",
+    title: "Evaluasi Program Maggot Desa Martubung - Q1 2025",
     content:
       "Rekan-rekan, berikut adalah poin evaluasi dari kunjungan terakhir ke kandang maggot. Ada beberapa kendala suhu yang perlu kita diskusikan solusinya...",
     author: {
