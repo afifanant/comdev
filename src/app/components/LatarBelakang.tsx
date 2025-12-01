@@ -9,7 +9,7 @@ import {
   Target,    // Icon baru untuk Misi
 } from "lucide-react";
 import { useState } from "react";
-import TargetCursor from "../rb/TargetCursor/TargetCursor";
+import TargetCursor from "../rb/TargetCursor/TargetCursor"; // Dipertahankan, asumsi ini ada
 
 export default function LatarBelakang() {
   const [isHovering, setIsHovering] = useState(false);
@@ -48,9 +48,11 @@ export default function LatarBelakang() {
         <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
           
           {/* 1. URGENCY CARD (Yellow) */}
-          <div className="group cursor-target relative cursor-pointer transform rotate-2 hover:rotate-0 transition-transform duration-500 animate-[float_6s_ease-in-out_infinite]">
-            <div className="absolute inset-0 bg-yellow-100 border border-yellow-300 rounded-3xl transform translate-x-2 translate-y-2 opacity-0 group-hover:opacity-60 transition-all duration-500 group-hover:translate-x-3 group-hover:translate-y-3"></div>
-            <div className="absolute inset-0 bg-yellow-200 border border-yellow-400 rounded-3xl transform translate-x-1 translate-y-1 opacity-0 group-hover:opacity-80 transition-all duration-300 group-hover:translate-x-2 group-hover:translate-y-2"></div>
+          <div 
+            className="group cursor-target relative cursor-pointer transform md:rotate-2 hover:rotate-0 transition-transform duration-500 md:animate-[float_6s_ease-in-out_infinite]"
+          >
+            <div className="absolute inset-0 bg-yellow-100 border border-yellow-300 rounded-3xl transform md:translate-x-2 md:translate-y-2 opacity-0 group-hover:opacity-60 transition-all duration-500 group-hover:md:translate-x-3 group-hover:md:translate-y-3"></div>
+            <div className="absolute inset-0 bg-yellow-200 border border-yellow-400 rounded-3xl transform md:translate-x-1 md:translate-y-1 opacity-0 group-hover:opacity-80 transition-all duration-300 group-hover:md:translate-x-2 group-hover:md:translate-y-2"></div>
 
             <div className="relative bg-yellow-50 hover:bg-yellow-100 border border-yellow-200 rounded-3xl p-8 shadow-yellow-200 hover:shadow-lg transition-all duration-500 hover:-translate-y-2 z-10">
               <div className="w-16 h-16 bg-yellow-500 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-12 group-hover:scale-110 transition-all duration-300">
@@ -66,9 +68,11 @@ export default function LatarBelakang() {
           </div>
 
           {/* 2. SOLUTION CARD (Blue) */}
-          <div className="group cursor-target relative cursor-pointer transform -rotate-1 hover:rotate-0 transition-transform duration-500 md:translate-y-8 animate-[float_6s_ease-in-out_infinite_1s]">
-            <div className="absolute inset-0 bg-blue-100 border border-blue-300 rounded-3xl transform translate-x-2 translate-y-2 opacity-0 group-hover:opacity-60 transition-all duration-500 group-hover:translate-x-3 group-hover:translate-y-3"></div>
-            <div className="absolute inset-0 bg-blue-200 border border-blue-400 rounded-3xl transform translate-x-1 translate-y-1 opacity-0 group-hover:opacity-80 transition-all duration-300 group-hover:translate-x-2 group-hover:translate-y-2"></div>
+          <div 
+            className="group cursor-target relative cursor-pointer transform md:-rotate-1 hover:rotate-0 transition-transform duration-500 md:translate-y-8 md:animate-[float_6s_ease-in-out_infinite_1s]"
+          >
+            <div className="absolute inset-0 bg-blue-100 border border-blue-300 rounded-3xl transform md:translate-x-2 md:translate-y-2 opacity-0 group-hover:opacity-60 transition-all duration-500 group-hover:md:translate-x-3 group-hover:md:translate-y-3"></div>
+            <div className="absolute inset-0 bg-blue-200 border border-blue-400 rounded-3xl transform md:translate-x-1 md:translate-y-1 opacity-0 group-hover:opacity-80 transition-all duration-300 group-hover:md:translate-x-2 group-hover:md:translate-y-2"></div>
 
             <div className="relative bg-blue-50 hover:bg-blue-100 border border-blue-200 rounded-3xl p-8 shadow-blue-200 hover:shadow-lg transition-all duration-500 hover:-translate-y-2 z-10">
               <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:-rotate-12 group-hover:scale-110 transition-all duration-300">
@@ -84,9 +88,11 @@ export default function LatarBelakang() {
           </div>
 
           {/* 3. IMPACT CARD (Green) */}
-          <div className="group cursor-target relative cursor-pointer transform -rotate-2 hover:rotate-0 transition-transform duration-500 md:-translate-y-4 animate-[float_6s_ease-in-out_infinite_2s]">
-            <div className="absolute inset-0 bg-green-100 border border-green-300 rounded-3xl transform translate-x-2 translate-y-2 opacity-0 group-hover:opacity-60 transition-all duration-500 group-hover:translate-x-3 group-hover:translate-y-3"></div>
-            <div className="absolute inset-0 bg-green-200 border border-green-400 rounded-3xl transform translate-x-1 translate-y-1 opacity-0 group-hover:opacity-80 transition-all duration-300 group-hover:translate-x-2 group-hover:translate-y-2"></div>
+          <div 
+            className="group cursor-target relative cursor-pointer transform md:-rotate-2 hover:rotate-0 transition-transform duration-500 md:-translate-y-4 md:animate-[float_6s_ease-in-out_infinite_2s]"
+          >
+            <div className="absolute inset-0 bg-green-100 border border-green-300 rounded-3xl transform md:translate-x-2 md:translate-y-2 opacity-0 group-hover:opacity-60 transition-all duration-500 group-hover:md:translate-x-3 group-hover:md:translate-y-3"></div>
+            <div className="absolute inset-0 bg-green-200 border border-green-400 rounded-3xl transform md:translate-x-1 md:translate-y-1 opacity-0 group-hover:opacity-80 transition-all duration-300 group-hover:md:translate-x-2 group-hover:md:translate-y-2"></div>
 
             <div className="relative bg-green-50 hover:bg-green-100 border border-green-200 rounded-3xl p-8 shadow-green-200 hover:shadow-lg transition-all duration-500 hover:-translate-y-2 z-10">
               <div className="w-16 h-16 bg-green-600 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-45 group-hover:scale-110 transition-all duration-300">
@@ -102,9 +108,11 @@ export default function LatarBelakang() {
           </div>
 
           {/* 4. MISSION CARD (Purple) */}
-          <div className="group cursor-target relative cursor-pointer transform rotate-1 hover:rotate-0 transition-transform duration-500 md:translate-y-6 animate-[float_6s_ease-in-out_infinite_3s]">
-            <div className="absolute inset-0 bg-purple-100 border border-purple-300 rounded-3xl transform translate-x-2 translate-y-2 opacity-0 group-hover:opacity-60 transition-all duration-500 group-hover:translate-x-3 group-hover:translate-y-3"></div>
-            <div className="absolute inset-0 bg-purple-200 border border-purple-400 rounded-3xl transform translate-x-1 translate-y-1 opacity-0 group-hover:opacity-80 transition-all duration-300 group-hover:translate-x-2 group-hover:translate-y-2"></div>
+          <div 
+            className="group cursor-target relative cursor-pointer transform md:rotate-1 hover:rotate-0 transition-transform duration-500 md:translate-y-6 md:animate-[float_6s_ease-in-out_infinite_3s]"
+          >
+            <div className="absolute inset-0 bg-purple-100 border border-purple-300 rounded-3xl transform md:translate-x-2 md:translate-y-2 opacity-0 group-hover:opacity-60 transition-all duration-500 group-hover:md:translate-x-3 group-hover:md:translate-y-3"></div>
+            <div className="absolute inset-0 bg-purple-200 border border-purple-400 rounded-3xl transform md:translate-x-1 md:translate-y-1 opacity-0 group-hover:opacity-80 transition-all duration-300 group-hover:md:translate-x-2 group-hover:md:translate-y-2"></div>
 
             <div className="relative bg-purple-50 hover:bg-purple-100 border border-purple-200 rounded-3xl p-8 shadow-purple-200 hover:shadow-lg transition-all duration-500 hover:-translate-y-2 z-10">
               <div className="w-16 h-16 bg-purple-600 rounded-2xl flex items-center justify-center mb-6 group-hover:-rotate-6 group-hover:scale-110 transition-all duration-300">
