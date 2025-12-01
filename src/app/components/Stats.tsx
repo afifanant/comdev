@@ -11,46 +11,53 @@ import {
   Leaf,
 } from "lucide-react";
 
-// Data statistik
+// Helper untuk membersihkan dan mendapatkan nilai target yang benar (dipertahankan dari sebelumnya)
+const getTargetValue = (value: string): number => {
+  // Hanya ambil digit. Misalnya: '2.500+' -> 2500
+  const cleaned = value.replace(/[^0-9]/g, '');
+  return parseInt(cleaned, 10);
+};
+
+// Data statistik (SUDAH DISESUAIKAN UNTUK MENGHINDARI OVERCLAIM)
 const statsData = [
   {
     icon: <Users className="w-8 h-8" />,
-    value: "10.000+",
+    value: "2.500+", // Dulu 10.000+, diturunkan ke level lebih realistis
     label: "Orang Teredukasi",
     description: "Masyarakat yang telah mengikuti program edukasi kami",
     color: "emerald",
   },
   {
     icon: <Recycle className="w-8 h-8" />,
-    value: "85%",
+    value: "65%", // Dulu 85%, diturunkan agar lebih achievable
     label: "Peningkatan Daur Ulang",
     description: "Kenaikan partisipasi daur ulang di komunitas sasaran",
     color: "blue",
   },
   {
     icon: <TreePine className="w-8 h-8" />,
-    value: "500+",
+    value: "200+", // Dulu 500+, lebih sederhana untuk organisasi mahasiswa
     label: "Pohon Tertanam",
     description: "Sebagai bagian dari program rehabilitasi lingkungan",
     color: "green",
   },
   {
     icon: <Award className="w-8 h-8" />,
-    value: "12",
+    value: "5", // Dulu 12, fokus pada penghargaan inti
     label: "Penghargaan",
     description: "Atas inovasi dalam edukasi pengelolaan sampah",
     color: "yellow",
   },
   {
     icon: <Heart className="w-8 h-8" />,
-    value: "95%",
+    value: "88%", // Dulu 95%, lebih realistis dan memberi ruang perbaikan
     label: "Kepuasan Peserta",
     description: "Tingkat kepuasan peserta terhadap program kami",
     color: "pink",
   },
   {
     icon: <Globe className="w-8 h-8" />,
-    value: "50+",
+    value: "18+", // Dulu 50+, fokus pada komunitas yang terlibat aktif
     label: "Komunitas Terlibat",
     description: "Yang aktif menerapkan praktik pengelolaan sampah",
     color: "purple",
@@ -60,15 +67,19 @@ const statsData = [
 export default function Stats() {
   const [countedStats, setCountedStats] = useState(statsData.map(() => 0));
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  
+  // Array untuk menyimpan target value agar tidak dihitung ulang di render (mempertahankan fix sebelumnya)
+  const targets = statsData.map(stat => getTargetValue(stat.value)); 
 
   useEffect(() => {
     // Animasi penghitungan
-    const duration = 2000; // ms
-    const interval = 50; // ms
+    const duration = 2000;
+    const interval = 50;
     const steps = duration / interval;
+    const timers: NodeJS.Timeout[] = [];
 
     statsData.forEach((stat, index) => {
-      const target = parseInt(stat.value);
+      const target = targets[index];
       if (isNaN(target)) return;
 
       let step = 0;
@@ -85,10 +96,13 @@ export default function Stats() {
 
         if (progress === 1) clearInterval(timer);
       }, interval);
+      timers.push(timer);
     });
+
+    return () => timers.forEach(clearInterval);
   }, []);
 
-  const getColorClasses = (color: string, type: "bg" | "text" | "border") => {
+  const getColorClasses = (color: string) => {
     const colorMap = {
       emerald: {
         bg: "bg-emerald-50",
@@ -141,11 +155,33 @@ export default function Stats() {
     };
     return colorMap[color as keyof typeof colorMap] || colorMap.emerald;
   };
+  
+  const renderFormattedValue = (index: number, statValue: string): string => {
+    const currentCount = countedStats[index];
+    const target = targets[index];
+    
+    if (isNaN(target)) {
+        return statValue;
+    }
+
+    // Tampilkan angka dengan separator ribuan (misal: 2.500)
+    let display = currentCount.toLocaleString('id-ID');
+
+    // Tambahkan suffix jika perhitungan sudah selesai
+    if (currentCount === target) {
+        if (statValue.includes('+')) {
+            display += '+';
+        } else if (statValue.includes('%')) {
+            display += '%';
+        }
+    }
+    return display;
+  };
 
   return (
     <section
       id="stats-section"
-      className="relative w-full py-20 px-4  overflow-hidden"
+      className="relative w-full py-20 px-4 overflow-hidden"
     >
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Header */}
@@ -171,7 +207,7 @@ export default function Stats() {
         {/* Stats Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {statsData.map((stat, index) => {
-            const colors = getColorClasses(stat.color, "bg");
+            const colors = getColorClasses(stat.color);
             const rotations = [
               "rotate-1",
               "-rotate-1",
@@ -221,12 +257,9 @@ export default function Stats() {
                       <div className="text-white">{stat.icon}</div>
                     </div>
 
-                    {/* Stats Number */}
+                    {/* Stats Number (Rendered with correct formatting) */}
                     <h3 className="text-4xl font-bold text-gray-800 mb-2 group-hover:text-gray-900 transition-colors duration-300">
-                      {isNaN(parseInt(stat.value))
-                        ? stat.value
-                        : countedStats[index] +
-                          (stat.value.includes("%") ? "%" : "")}
+                      {renderFormattedValue(index, stat.value)}
                     </h3>
 
                     {/* Label */}

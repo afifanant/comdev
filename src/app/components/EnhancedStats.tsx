@@ -1,5 +1,6 @@
 "use client"
 import { useState, useEffect } from "react"
+import Link from "next/link" // IMPORT LINK DARI NEXT.JS
 import { Users, Recycle, TreePine, Award, TrendingUp, Globe, Heart, Zap, Leaf } from "lucide-react"
 
 const statsData = [
@@ -8,7 +9,7 @@ const statsData = [
     value: "10.000+",
     label: "Orang Teredukasi",
     description: "Masyarakat yang telah mengikuti program edukasi kami",
-    color: "navy", // Warna Utama Comdev
+    color: "navy",
     growth: "+15%",
     detail: "Setiap bulan bertambah 800+ member baru",
   },
@@ -17,7 +18,7 @@ const statsData = [
     value: "85%",
     label: "Peningkatan Daur Ulang",
     description: "Kenaikan partisipasi daur ulang di komunitas sasaran",
-    color: "blue", // Aksen Biru Terang
+    color: "blue",
     growth: "+23%",
     detail: "Dari 62% menjadi 85% dalam 6 bulan terakhir",
   },
@@ -26,7 +27,7 @@ const statsData = [
     value: "500+",
     label: "Pohon Tertanam",
     description: "Sebagai bagian dari program rehabilitasi lingkungan",
-    color: "teal", // Ganti Green jadi Teal biar lebih modern
+    color: "teal",
     growth: "+31%",
     detail: "Target 1000 pohon pada akhir tahun",
   },
@@ -35,7 +36,7 @@ const statsData = [
     value: "12",
     label: "Penghargaan",
     description: "Atas inovasi dalam edukasi pengelolaan sampah",
-    color: "gold", // Warna Emas untuk Award
+    color: "gold",
     growth: "+42%",
     detail: "Termasuk penghargaan internasional",
   },
@@ -90,14 +91,13 @@ export default function EnhancedStats() {
     })
   }, [isVisible])
 
-  // UPDATE: Color Map disesuaikan dengan Brand Comdev
   const getColorClasses = (color: string) => {
     const colorMap = {
       navy: {
         bg: "bg-blue-50",
         text: "text-[#001d47]",
         border: "border-blue-200",
-        iconBg: "bg-[#001d47]", // Biru Dongker Gelap
+        iconBg: "bg-[#001d47]",
         gradient: "from-[#001d47] to-[#00337A]",
         glow: "shadow-blue-900/20",
       },
@@ -143,7 +143,6 @@ export default function EnhancedStats() {
 
           <h1 className="text-5xl md:text-6xl font-bold text-gray-800 mb-6 leading-tight">
             Dampak Nyata dari{" "}
-            {/* Gradient Text Biru Dongker */}
             <span className="bg-gradient-to-r from-[#001d47] to-blue-600 bg-clip-text text-transparent">
               Aksi Bersama
             </span>
@@ -153,7 +152,6 @@ export default function EnhancedStats() {
             Angka-angka ini membuktikan bahwa gerakan kolektif dapat menciptakan perubahan besar untuk lingkungan kita.
           </p>
 
-          {/* Progress Indicator */}
           <div className="flex justify-center gap-2 mb-8">
             {[...Array(4)].map((_, i) => (
               <div
@@ -186,23 +184,19 @@ export default function EnhancedStats() {
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
-                {/* Glow Effect */}
                 <div
                   className={`absolute inset-0 rounded-3xl ${colors.glow} opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-xl`}
                 ></div>
 
-                {/* Main Card */}
                 <div
                   className={`relative ${colors.bg} border ${colors.border} rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 z-10 overflow-hidden`}
                 >
-                  {/* Background Pattern */}
                   <div className="absolute inset-0 opacity-5 rounded-3xl overflow-hidden">
                     <div className={`absolute -top-4 -right-4 w-24 h-24 ${colors.iconBg} rounded-full blur-2xl`}></div>
                     <div className={`absolute -bottom-4 -left-4 w-20 h-20 ${colors.iconBg} rounded-full blur-xl`}></div>
                   </div>
 
                   <div className="relative z-10">
-                    {/* Enhanced Icon */}
                     <div className="flex items-center justify-between mb-6">
                       <div
                         className={`w-16 h-16 ${colors.iconBg} rounded-2xl flex items-center justify-center group-hover:rotate-12 group-hover:scale-110 transition-all duration-300 shadow-lg`}
@@ -210,14 +204,12 @@ export default function EnhancedStats() {
                         <div className="text-white">{stat.icon}</div>
                       </div>
 
-                      {/* Growth Badge */}
                       <div className="bg-white/80 backdrop-blur-sm text-gray-700 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-sm border border-gray-100">
                         <TrendingUp className="w-3 h-3 text-green-600" />
                         {stat.growth}
                       </div>
                     </div>
 
-                    {/* Enhanced Stats Number */}
                     <div className="mb-4">
                       <h3 className="text-4xl font-bold text-gray-800 mb-2 group-hover:text-[#001d47] transition-colors duration-300">
                         {stat.value.includes("%") || stat.value.includes("+")
@@ -225,7 +217,6 @@ export default function EnhancedStats() {
                           : countedStats[index].toLocaleString() + (stat.value.includes("+") ? "+" : "")}
                       </h3>
 
-                      {/* Animated Progress Bar */}
                       <div className="w-full bg-gray-200 rounded-full h-1 mb-3">
                         <div
                           className={`h-1 rounded-full ${colors.iconBg} transition-all duration-2000`}
@@ -237,24 +228,20 @@ export default function EnhancedStats() {
                       </div>
                     </div>
 
-                    {/* Label */}
                     <h4 className={`text-lg font-bold mb-3 ${colors.text} transition-colors duration-300`}>
                       {stat.label}
                     </h4>
 
-                    {/* Description */}
                     <p className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300 text-sm mb-4">
                       {stat.description}
                     </p>
 
-                    {/* Detail on Hover */}
                     {hoveredIndex === index && (
                       <div className="mt-4 p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-white/50 animate-in slide-in-from-bottom duration-300">
                         <p className="text-xs text-gray-600 font-medium">{stat.detail}</p>
                       </div>
                     )}
 
-                    {/* Hover indicator */}
                     <div
                       className={`mt-4 w-full h-1 ${colors.iconBg} rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`}
                     ></div>
@@ -270,7 +257,6 @@ export default function EnhancedStats() {
           
           {/* Join Community CTA - DARK NAVY THEME */}
           <div className="bg-[#001d47] rounded-3xl p-8 relative overflow-hidden shadow-xl transform transition-transform hover:scale-[1.01]">
-            {/* Background Pattern */}
             <div className="absolute inset-0 opacity-20">
               <div className="absolute top-4 right-4 w-32 h-32 bg-blue-500 rounded-full blur-3xl"></div>
               <div className="absolute bottom-4 left-4 w-24 h-24 bg-cyan-400 rounded-full blur-2xl"></div>
@@ -292,13 +278,14 @@ export default function EnhancedStats() {
                 sertifikat kegiatan!
               </p>
 
-              <button 
-                onClick={() => window.location.href = "/komunitas"}
-                className="bg-white text-[#001d47] px-8 py-3 rounded-full font-bold hover:bg-blue-50 transition-all duration-300 hover:scale-105 shadow-lg flex items-center gap-2"
+              {/* PERUBAHAN DI SINI: MENGGUNAKAN NEXT/LINK */}
+              <Link
+                href="/komunitas"
+                className="bg-white text-[#001d47] px-8 py-3 rounded-full font-bold hover:bg-blue-50 transition-all duration-300 hover:scale-105 shadow-lg flex items-center gap-2 inline-flex"
               >
                 Daftar Member
                 <TrendingUp className="w-4 h-4" />
-              </button>
+              </Link>
             </div>
           </div>
 
@@ -351,7 +338,6 @@ export default function EnhancedStats() {
         </div>
       </div>
 
-      {/* Floating Background Elements (BIRU) */}
       <div className="absolute top-20 left-10 w-32 h-32 bg-[#001d47] rounded-full opacity-5 animate-pulse"></div>
       <div className="absolute bottom-32 right-16 w-24 h-24 bg-blue-300 rounded-full opacity-10 animate-bounce"></div>
       <div className="absolute top-1/2 left-8 w-16 h-16 bg-teal-200 rounded-full opacity-20 animate-ping"></div>

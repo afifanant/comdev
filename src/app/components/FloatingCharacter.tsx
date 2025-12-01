@@ -1,7 +1,7 @@
 "use client";
-import { useState } from "react";
-import { MessageCircle, Info, Calendar, Users } from "lucide-react";
-import Image from "next/image"; // Pakai Image component biar optimal
+import { useState, useEffect } from "react";
+import { MessageCircle, X } from "lucide-react";
+import Image from "next/image"; 
 
 const FloatingCharacter = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -9,57 +9,60 @@ const FloatingCharacter = () => {
   const [currentDialog, setCurrentDialog] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
-  // UBAH: Dialog disesuaikan dengan konteks Organisasi Comdev
+  // UBAH: Dialog lebih natural, humble, dan "manusiawi".
+  // Gak ada angka lebay, fokus ke ajakan dan info ringkas.
   const dialogs = [
     {
-      text: "Selamat datang di Comdev KSE UINSU! 👋",
+      text: "Halo! Selamat datang di rumah Comdev KSE UINSU 👋",
       type: "greeting",
     },
     {
-      text: "Tertarik bergabung? Cek halaman Komunitas ya! 🚀",
+      text: "Kami wadah mahasiswa untuk berbagi dampak ke masyarakat.",
+      type: "info",
+    },
+    {
+      text: "Mau tau program terbaru kami? Cek menu Kegiatan ya! 🌿",
       type: "action",
     },
     {
-      text: "Kami sudah menanam 500+ pohon tahun ini. 🌱",
+      text: "Yuk, mulai peduli lingkungan dari hal kecil hari ini.",
       type: "impact",
     },
     {
-      text: "Program Desa Binaan kami fokus pada Ekonomi Sirkular. ♻️",
-      type: "info",
-    },
-    {
-      text: "Ada pertanyaan soal kerjasama? Hubungi kami di menu Kontak. 📞",
+      text: "Ada ide kolaborasi? Kami sangat terbuka lho! 🤝",
       type: "action",
     },
     {
-      text: "Misi kami: Memberdayakan masyarakat melalui aksi nyata. 💪",
+      text: "Jangan lupa follow IG kami untuk update real-time 📸",
       type: "info",
-    },
-    {
-      text: "Jangan lupa download profil organisasi kami di bawah! 📥",
-      type: "action",
-    },
-    {
-      text: "Ingin berkolaborasi? Kami terbuka untuk partnership! 🤝",
-      type: "greeting",
     },
   ];
 
-  // UBAH: Warna disesuaikan jadi Palet Biru Profesional
+  // Palet Warna: Konsisten Navy & Biru Profesional
   const getDialogColor = (type: string) => {
     switch (type) {
       case "greeting":
-        return "bg-[#001d47]"; // Navy Comdev
+        return "bg-[#001d47]"; // Navy Utama
       case "impact":
-        return "bg-blue-600"; // Biru Terang
+        return "bg-teal-600"; // Teal (Nuansa Alam/Segar)
       case "action":
-        return "bg-sky-600"; // Sky Blue
+        return "bg-blue-600"; // Biru Action
       case "info":
-        return "bg-slate-700"; // Abu Tua Profesional
+        return "bg-slate-700"; // Netral
       default:
         return "bg-[#001d47]";
     }
   };
+
+  // Logic: Muncul otomatis sekali saat load, lalu diam sampai diklik
+  useEffect(() => {
+    const timer = setTimeout(() => {
+        setShowDialog(true);
+        // Auto hide setelah 5 detik
+        setTimeout(() => setShowDialog(false), 5000);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleCharacterClick = () => {
     if (isAnimating) return;
@@ -68,85 +71,92 @@ const FloatingCharacter = () => {
       setShowDialog(false);
     } else {
       setIsAnimating(true);
-      const randomIndex = Math.floor(Math.random() * dialogs.length);
+      // Random dialog biar gak bosenin
+      let randomIndex;
+      do {
+        randomIndex = Math.floor(Math.random() * dialogs.length);
+      } while (randomIndex === currentDialog && dialogs.length > 1); // Hindari dialog sama berturut-turut
+      
       setCurrentDialog(randomIndex);
       setShowDialog(true);
 
       setTimeout(() => setIsAnimating(false), 300);
+      
+      // Auto close lebih lama dikit (6 detik)
       setTimeout(() => {
         setShowDialog(false);
-      }, 8000);
+      }, 6000);
     }
   };
 
-  if (!isVisible) {
-    return (
-      <div className="fixed bottom-4 right-4 z-50">
-        <button
-          onClick={() => setIsVisible(true)}
-          // Tombol jadi Biru Dongker
-          className="bg-[#001d47] hover:bg-blue-900 text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
-          aria-label="Show Assistant"
-        >
-          <MessageCircle className="w-6 h-6" />
-        </button>
-      </div>
-    );
-  }
+  if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end space-y-3">
+    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end space-y-3 font-sans">
+      
+      {/* Tombol Close (X) Kecil biar user bisa hide kalau keganggu */}
+      <button 
+        onClick={() => setIsVisible(false)}
+        className="absolute -top-8 right-0 text-gray-400 hover:text-red-500 transition-colors text-xs flex items-center gap-1 bg-white/80 px-2 py-1 rounded-full shadow-sm"
+      >
+        <X className="w-3 h-3" /> Hide
+      </button>
+
       {/* Dialog Bubble */}
       {showDialog && (
         <div
-          className={`relative max-w-xs sm:max-w-sm animate-in slide-in-from-bottom-2 duration-300 ${
-            isAnimating ? "animate-pulse" : ""
+          className={`relative max-w-[250px] sm:max-w-xs animate-in slide-in-from-bottom-2 duration-300 ${
+            isAnimating ? "scale-95 opacity-90" : "scale-100 opacity-100"
           }`}
         >
           <div
             className={`${getDialogColor(
               dialogs[currentDialog].type
-            )} text-white p-4 rounded-2xl rounded-br-sm shadow-xl relative cursor-pointer hover:shadow-2xl transition-shadow duration-200 border border-white/10`}
+            )} text-white p-4 rounded-2xl rounded-br-sm shadow-xl relative cursor-pointer hover:shadow-2xl transition-all duration-200 border border-white/10`}
             onClick={handleCharacterClick}
           >
-            <p className="text-sm sm:text-base font-medium leading-relaxed">
+            <p className="text-sm leading-relaxed font-medium">
               {dialogs[currentDialog].text}
             </p>
-            {/* Speech bubble tail */}
+            {/* Segitiga Bubble */}
             <div
-              className={`absolute bottom-0 right-4 w-0 h-0 border-l-[12px] border-l-transparent border-r-[12px] border-r-transparent border-t-[12px] ${getDialogColor(
+              className={`absolute bottom-0 right-5 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[10px] ${getDialogColor(
                 dialogs[currentDialog].type
-              ).replace("bg-", "border-t-")} transform translate-y-full`}
+              ).replace("bg-", "border-t-")} transform translate-y-[8px]`}
             ></div>
           </div>
         </div>
       )}
 
       {/* Character / Assistant Icon */}
-      <div className="relative">
+      <div className="relative group">
         <div
-          className={`cursor-pointer transition-all hover:scale-105 flex items-center justify-center group`}
+          className="cursor-pointer transition-all duration-300 hover:scale-105 active:scale-95 flex items-center justify-center"
           onClick={handleCharacterClick}
         >
-          {/* SARAN KERAS: Ganti gambar '/char.png' (kartun) dengan Foto Ketua, 
-             Logo Comdev, atau ilustrasi 3D yang lebih bersih.
-             Sementara gue tetep pake img tag biar gak error kalau lu belum ganti file.
-          */}
-          <img 
-            src="/char.png" 
-            alt="Assistant" 
-            className="w-16 h-auto drop-shadow-xl" // Batasi ukuran biar gak kegedean
-          />
+          {/* Menggunakan Next/Image untuk optimasi */}
+          <div className="w-16 h-16 relative filter drop-shadow-lg">
+             <Image 
+                src="/char.png" 
+                alt="Comdev Assistant" 
+                width={64}
+                height={64}
+                className="object-contain w-full h-full hover:brightness-110 transition-all"
+                priority
+             />
+          </div>
         </div>
 
-        {/* Particles jadi Biru/Putih */}
-        <div className="absolute -top-1 -right-1 w-2 h-2 bg-blue-400 rounded-full animate-pulse opacity-60"></div>
-        <div className="absolute -bottom-1 -left-1 w-1 h-1 bg-white rounded-full animate-pulse delay-700 opacity-40"></div>
+        {/* Status Indicator (Pulse) */}
+        <span className="absolute bottom-1 right-0 flex h-3 w-3">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500 border-2 border-white"></span>
+        </span>
 
-        {/* Click indicator */}
+        {/* Icon Chat Kecil kalau Bubble lagi nutup */}
         {!showDialog && (
-          <div className="absolute -top-2 -right-2 w-6 h-6 bg-white rounded-full shadow-md flex items-center justify-center animate-bounce">
-            <MessageCircle className="w-3 h-3 text-[#001d47]" />
+          <div className="absolute -top-1 -right-1 w-6 h-6 bg-white text-[#001d47] rounded-full shadow-md flex items-center justify-center animate-bounce border border-gray-100">
+            <MessageCircle className="w-3 h-3" />
           </div>
         )}
       </div>
