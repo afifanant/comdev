@@ -31,13 +31,12 @@ export default function Navbar() {
         gradientOverlay: "from-yellow-400 to-yellow-500",
       };
     } else if (pathname === "/komunitas") {
-      // --- PERBAIKAN: GANTI JADI HIJAU (EMERALD) ---
       return {
         primary: "emerald",
         gradient: "from-emerald-500 to-emerald-600",
         gradientHover: "from-emerald-600 to-emerald-700",
         text: "from-emerald-600 to-emerald-600",
-        bg: "bg-emerald-100", // <--- INI YANG BIKIN BACKGROUND TOMBOL IJO
+        bg: "bg-emerald-100",
         bgHover: "hover:bg-emerald-50/80",
         textHover: "hover:text-emerald-600",
         borderColor: "border-emerald-100",
@@ -120,7 +119,7 @@ export default function Navbar() {
     <>
       {/* Desktop Navbar */}
       <nav
-        className={`fixed top-6 left-1/2 transform -translate-x-1/2 z-[90] transition-all duration-500 ease-in-out  ${
+        className={`fixed top-6 left-1/2 transform -translate-x-1/2 z-[90] transition-all duration-500 ease-in-out  ${
           scrolled ? "scale-95 top-4" : "scale-100"
         }`}
       >
@@ -193,8 +192,8 @@ export default function Navbar() {
               </a>
             </div>
 
-            {/* Mobile Content */}
-            <div className="md:hidden  flex items-center justify-between min-w-82 ">
+            {/* Mobile Content (Hanya Logo dan Menu Button) */}
+            <div className="md:hidden flex items-center justify-between min-w-82 ">
               <div className="flex items-center space-x-2">
                 <div className="relative w-8 h-8 flex items-center justify-center">
                    <Image 
@@ -212,24 +211,21 @@ export default function Navbar() {
                 </span>
               </div>
 
+              {/* FIX: Hanya menampilkan Menu icon, X dipindah ke dalam Mobile Menu */}
               <button
-                onClick={() => setIsOpen(!isOpen)}
+                onClick={() => setIsOpen(true)} // Selalu set ke true untuk buka
                 className={`p-2 rounded-full ${theme.bgHover} transition-colors duration-200`}
               >
-                {isOpen ? (
-                  <X className="w-5 h-5 text-gray-700" />
-                ) : (
-                  <Menu className="w-5 h-5 text-gray-700" />
-                )}
+                <Menu className="w-5 h-5 text-gray-700" />
               </button>
             </div>
           </div>
         </div>
       </nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       <div
-        className={`fixed  inset-0 z-99 md:hidden transition-all duration-300 ${
+        className={`fixed inset-0 z-[99] md:hidden transition-all duration-300 ${ // Z-index di-adjust
           isOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
@@ -247,6 +243,17 @@ export default function Navbar() {
             isOpen ? "translate-y-0 scale-100" : "-translate-y-4 scale-95"
           }`}
         >
+          {/* NEW: Tombol X di dalam Mobile Menu Header */}
+          <div className="flex justify-end mb-4 -mt-2 -mr-2">
+            <button
+              onClick={() => setIsOpen(false)} // Menutup menu
+              className="p-2 rounded-full hover:bg-gray-100 transition-colors duration-200 text-gray-700"
+            >
+              <X className="w-6 h-6" />
+            </button>
+          </div>
+          {/* END NEW BLOCK */}
+          
           <div className="space-y-2">
             {navItems.map((item, index) => {
               const IconComponent = item.icon;
