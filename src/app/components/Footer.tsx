@@ -9,23 +9,23 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 
-// Komponen Icon TikTok Custom (SVG) - Versi TypeScript
-const TikTokIcon = ({ className }: { className?: string }) => (
-  <svg 
-    xmlns="http://www.w3.org/2000/svg" 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="2" 
-    strokeLinecap="round" 
-    strokeLinejoin="round" 
-    className={className}
-  >
-    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
-  </svg>
-);
-
 export default function Footer() {
+  // Komponen Icon TikTok Custom (SVG) - Didefinisikan di sini agar scope jelas
+  const TikTokIcon = ({ className }: { className?: string }) => (
+    <svg 
+      xmlns="http://www.w3.org/2000/svg" 
+      viewBox="0 0 24 24" 
+      fill="none" 
+      stroke="currentColor" 
+      strokeWidth="2" 
+      strokeLinecap="round" 
+      strokeLinejoin="round" 
+      className={className}
+    >
+      <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+    </svg>
+  );
+
   return (
     <footer className="relative w-full bg-[#0b1120] text-white py-16 px-4 border-t border-gray-800">
       <div className="max-w-6xl mx-auto">
@@ -52,7 +52,7 @@ export default function Footer() {
               melalui inovasi sosial, edukasi lingkungan, dan ekonomi sirkular yang berkelanjutan.
             </p>
             
-            {/* Social Icons */}
+            {/* Social Icons - Struktur CSS disederhanakan di wrapper A */}
             <div className="flex space-x-4">
               {/* Instagram */}
               <a 
@@ -120,7 +120,7 @@ export default function Footer() {
             </ul>
           </div>
 
-{/* Contact */}
+          {/* Contact */}
           <div>
             <h3 className="font-semibold text-lg mb-4 text-white">Hubungi Kami</h3>
             <div className="space-y-4 text-gray-400">
@@ -132,18 +132,16 @@ export default function Footer() {
                 </span>
               </div>
               
-              {/* FIX: ICON EMAIL DIUBAH MENJADI LINK MAILTO: */}
               <a 
                 href="mailto:pkseuinsucomdev@gmail.com"
                 className="flex items-center space-x-3 group cursor-pointer"
-                target="_blank" // Buka di tab baru (meskipun mailto, ini praktik standar)
+                target="_blank" 
                 rel="noopener noreferrer"
               >
                 <Mail className="w-5 h-5 text-blue-500 group-hover:text-blue-400" />
                 <span className="group-hover:text-gray-300 transition-colors">pkseuinsucomdev@gmail.com</span>
               </a>
 
-              {/* FIX: ICON TELEPON JUGA HARUS JADI LINK TEL: */}
               <a 
                 href="tel:+6282361464415"
                 className="flex items-center space-x-3 group cursor-pointer"
