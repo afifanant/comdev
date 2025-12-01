@@ -18,8 +18,8 @@ import {
   ChevronUp,
   Handshake,
 } from "lucide-react";
-import Navbar from "../components/Navbar"; // Pastikan path import ini sesuai
-import Footer from "../components/Footer"; // Pastikan path import ini sesuai
+import Navbar from "../components/Navbar"; 
+import Footer from "../components/Footer"; 
 
 interface ContactForm {
   name: string;
@@ -97,6 +97,11 @@ export default function ContactPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
 
+  // Nomor WhatsApp yang benar
+  const WHATSAPP_NUMBER = "6282361464415"; 
+  const WHATSAPP_DISPLAY = "+62 823-6146-4415";
+  const CONTACT_EMAIL = "comdev.kseuinsu@gmail.com";
+
   const handleInputChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -112,24 +117,23 @@ export default function ContactPage() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // --- LOGIKA KIRIM EMAIL OTOMATIS (MAILTO) ---
-    // Ini akan membuka aplikasi email bawaan user
-    const recipient = "comdev.kseuinsu@gmail.com"; // Ganti dengan email asli Comdev
-    const subject = encodeURIComponent(`[${formData.category.toUpperCase()}] ${formData.subject}`);
-    const body = encodeURIComponent(
-      `Halo Admin Comdev,\n\nSaya ${formData.name} (${formData.email}) ingin menyampaikan pesan:\n\n${formData.message}\n\nTerima kasih.`
+    const phoneNumber = WHATSAPP_NUMBER; 
+
+    const categoryTitle = supportCategories.find(c => c.id === formData.category)?.title || formData.category;
+
+    const whatsappMessage = encodeURIComponent(
+      `Halo Admin Comdev (via Website),\n\n*Kategori:* ${categoryTitle}\n*Subjek:* ${formData.subject}\n\n*Pengirim:*\nNama: ${formData.name}\nEmail: ${formData.email}\n\n*Pesan:*\n${formData.message}\n\nMohon konfirmasi pesannya ya!`
     );
 
-    // Simulasi loading sebentar biar kerasa UX-nya
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    const waLink = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`;
 
-    // Buka Email Client
-    window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+    
+    window.open(waLink, '_blank');
 
     setIsSubmitting(false);
     setIsSubmitted(true);
 
-    // Reset form after 3 seconds
     setTimeout(() => {
       setIsSubmitted(false);
       setFormData({
@@ -139,7 +143,7 @@ export default function ContactPage() {
         subject: "",
         message: "",
       });
-    }, 3000);
+    }, 5000);
   };
 
   const getColorClasses = (color: string) => {
@@ -152,7 +156,7 @@ export default function ContactPage() {
       },
 
       purple: {
-        bg: "bg-purple-100",
+        bg: "bg-purple-10s0",
         text: "text-purple-600",
         border: "border-purple-200",
         button: "bg-purple-500",
@@ -170,9 +174,7 @@ export default function ContactPage() {
   return (
     <>
       <Navbar />
-      {/* Warna tetap Merah-Kuning sesuai request */}
       <div className="min-h-screen bg-gradient-to-br from-red-50 to-yellow-50">
-        {/* Header */}
         <section className="pt-32 pb-16 px-4">
           <div className="max-w-6xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 bg-red-100 px-4 py-2 rounded-full mb-6">
@@ -197,37 +199,40 @@ export default function ContactPage() {
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Contact Info & Support Categories */}
             <div className="lg:col-span-1 space-y-6">
-              {/* Contact Information */}
+              {/* Contact Information - FIX: Semuanya dibuat clickable */}
               <div className="bg-white rounded-3xl p-6 shadow-sm border border-gray-200">
                 <h3 className="text-xl font-bold text-gray-800 mb-6">
                   Informasi Kontak
                 </h3>
 
                 <div className="space-y-4">
-                  <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl">
-                    <div className="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center">
+                  {/* Email Link (Clickable Mailto) */}
+                  <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors cursor-pointer group">
+                    <div className="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center group-hover:bg-red-600 transition-colors">
                       <Mail className="w-6 h-6 text-white" />
                     </div>
                     <div className="overflow-hidden">
                       <div className="font-semibold text-gray-800">Email</div>
                       <div className="text-gray-600 text-sm truncate">
-                        comdev.kseuinsu@gmail.com
+                        {CONTACT_EMAIL}
                       </div>
                     </div>
-                  </div>
+                  </a>
 
-                  <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl">
-                    <div className="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center">
+                  {/* WhatsApp Link (Clickable wa.me) */}
+                  <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors cursor-pointer group">
+                    <div className="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center group-hover:bg-yellow-600 transition-colors">
                       <Phone className="w-6 h-6 text-white" />
                     </div>
                     <div>
                       <div className="font-semibold text-gray-800">WhatsApp</div>
                       <div className="text-gray-600 text-sm">
-                        +62 812-3456-7890
+                        {WHATSAPP_DISPLAY}
                       </div>
                     </div>
-                  </div>
+                  </a>
 
+                  {/* Alamat (Static Info) */}
                   <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl">
                     <div className="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center">
                       <MapPin className="w-6 h-6 text-white" />
@@ -256,7 +261,9 @@ export default function ContactPage() {
                     return (
                       <div
                         key={category.id}
-                        className={`${colors.bg} border ${colors.border} rounded-xl p-4 cursor-pointer hover:shadow-md transition-all duration-300`}
+                        className={`${colors.bg} border ${colors.border} rounded-xl p-4 cursor-pointer hover:shadow-md transition-all duration-300 ${
+                          formData.category === category.id ? `shadow-md border-2 border-dashed ${colors.text.replace('text-', 'border-')}` : ''
+                        }`}
                         onClick={() =>
                           setFormData({ ...formData, category: category.id })
                         }
@@ -307,19 +314,19 @@ export default function ContactPage() {
               <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-200">
                 {isSubmitted ? (
                   <div className="text-center py-12">
-                    <div className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                      <CheckCircle className="w-10 h-10 text-red-500" />
+                    <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                      <MessageCircle className="w-10 h-10 text-green-600" />
                     </div>
                     <h3 className="text-2xl font-bold text-gray-800 mb-4">
-                      Membuka Email... 📧
+                      Membuka WhatsApp... 🟢
                     </h3>
                     <p className="text-gray-600 mb-6">
-                      Sistem sedang membuka aplikasi email kamu. Silakan tekan tombol <strong>"Kirim"</strong> di aplikasi emailmu untuk menyelesaikan pesan.
+                      Sistem sedang mengalihkan ke WhatsApp. Silakan tekan tombol <strong>"Kirim"</strong> di aplikasi WhatsApp kamu untuk menyelesaikan pesan.
                     </p>
-                    <div className="inline-flex items-center gap-2 bg-red-100 px-4 py-2 rounded-full">
-                      <CheckCircle className="w-4 h-4 text-red-600" />
-                      <span className="text-red-700 font-medium text-sm">
-                        Proses dialihkan
+                    <div className="inline-flex items-center gap-2 bg-green-100 px-4 py-2 rounded-full">
+                      <CheckCircle className="w-4 h-4 text-green-600" />
+                      <span className="text-green-700 font-medium text-sm">
+                        Pesan sudah diformat dan siap dikirim
                       </span>
                     </div>
                   </div>
@@ -416,18 +423,18 @@ export default function ContactPage() {
 
                       <button
                         type="submit"
-                        disabled={isSubmitting}
-                        className="w-full bg-gradient-to-r from-red-500 to-yellow-500 text-white py-4 px-6 rounded-xl font-medium hover:from-red-600 hover:to-yellow-600 transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                        disabled={isSubmitting || !formData.category}
+                        className="w-full bg-gradient-to-r from-green-600 to-green-500 text-white py-4 px-6 rounded-xl font-medium hover:from-green-700 hover:to-green-600 transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                       >
                         {isSubmitting ? (
                           <>
                             <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                            Mempersiapkan Email...
+                            Mempersiapkan Pesan...
                           </>
                         ) : (
                           <>
                             <Send className="w-5 h-5" />
-                            Kirim ke Email Comdev
+                            Kirim ke WhatsApp Admin
                           </>
                         )}
                       </button>
